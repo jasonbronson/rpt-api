@@ -1,0 +1,490 @@
+/* HEADER */
+
+#header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  font-family: @font-family-sans-serif;
+
+	@media (max-width: @screen-md) {
+		top: 40px;
+		display: none;
+		background: @uou-white;
+		z-index: 9999999;
+	}
+
+	.header-top {
+		position: relative;
+		height: 40px;
+		background: @uou-white;
+
+		@media (max-width: @screen-md) {
+			height: auto;
+		}
+
+		.contact-info {
+			padding: 10px 0;
+
+			@media (max-width: @screen-md) {
+				border-bottom: 1px solid @uou-light-gray;
+			}
+
+			li {
+				padding: 0 0 0 21px;
+				border-right: 1px solid @uou-light-gray;
+
+				&:first-child {
+					padding: 0 25px 0 0;
+
+					@media (max-width: @screen-md) {
+						padding: 0;
+					}
+				}
+
+				&:last-child {
+					border-right: none;
+				}
+
+				.fa {
+					margin-right: 10px;
+				}
+
+				span {
+					text-transform: uppercase;
+					font-size: 12px;
+				}
+
+				@media (max-width: @screen-md) {
+					padding: 0;
+					display: block;
+					text-align: center;
+					border: none;
+				}
+			}
+		}
+
+		.contact-right {
+			float: right;
+
+			@media (max-width: @screen-md) {
+				float: none;
+				width: 100%;
+			}
+
+			.social {
+				padding: 10px 12px 10px 0;
+				display: inline-block;
+
+				@media (max-width: @screen-md) {
+					padding: 10px 0;
+					width: 100%;
+					text-align: center;
+				}
+
+				li {
+					padding: 0 2.5px;
+
+					a {
+						color: @gray-dark;
+					}
+				}
+			}
+
+			.header-login {
+				position: relative;
+				padding: 10px 0;
+				display: inline-block;
+
+				@media (max-width: @screen-md) {
+					padding: 10px 0;
+					width: 100%;
+					border-top: 1px solid @uou-light-gray;
+					text-align: center;
+				}
+
+				.fa {
+					margin-right: 10px;
+				}
+
+				.header-btn {
+					padding: 0 20px;
+					font-size: 12px;
+					text-transform: uppercase;
+					cursor: pointer;
+					background: transparent;
+					border: 1px solid @uou-light-gray;
+					border-width: 0 1px;
+					line-height: 20px;
+
+					@media (max-width: @screen-md) {
+						border: none;
+					}
+				}
+
+				.header-form {
+					position: absolute;
+					padding-top: 19px;
+					top: 20px;
+					right: -17px;
+					display: none;
+					z-index: 99;
+
+					@media (max-width: @screen-md) {
+						position: relative;
+						top: 0;
+						right: 0;
+						left: 0;
+					}
+
+					form {
+						padding: 30px;
+						width: 270px;
+						background: @uou-white;
+						box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+
+						@media (max-width: @screen-md) {
+							padding: 0 0 10px 0;
+							margin: 0 auto;
+							display: block;
+							box-shadow: none;
+							width: 250px;
+						}
+
+						.alert-message {
+							display: none;
+						}
+
+						.form-row {
+							margin-bottom: 20px;
+							text-align: left;
+
+							input {
+								width: 100%;
+							}
+
+							button {
+								width: 100%;
+								color: @uou-white;
+								border: 1px solid @uou-blue;
+							}
+
+							&.forgot-password {
+								margin: 0;
+							}
+
+							&.register {
+								margin: 0;
+							}
+						}
+					}
+				}
+			}
+
+			.header-language {
+				position: relative;
+				padding: 0 0 0 20px;
+				display: inline-block;
+
+				@media (max-width: @screen-md) {
+					padding: 10px 0;
+					width: 100%;
+					text-align: center;
+					border: 1px solid @uou-light-gray;
+					border-width: 1px 0;
+				}
+
+				.fa {
+					margin-right: 10px;
+				}
+
+				.header-btn {
+					padding: 0;
+					font-size: 12px;
+					text-transform: uppercase;
+					cursor: pointer;
+					background: transparent;
+					border: none;
+					line-height: 20px;
+				}
+
+				.header-nav {
+					position: absolute;
+					padding-top: 19px;
+					top: 10px;
+					right: 0;
+					display: none;
+					z-index: 9999;
+
+					@media (max-width: @screen-md) {
+						position: relative;
+						padding: 10px 0;
+						display: none;
+						top: 0;
+						left: 0;
+					}
+
+					ul {
+						background: @uou-white;
+						box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+
+						@media (max-width: @screen-md) {
+							box-shadow: none;
+						}
+
+						li {
+
+							&:last-child a {
+								border-bottom: none;
+							}
+
+							@media (max-width: @screen-md) {
+								display: inline-block;
+							}
+
+							a {	
+								padding: 15px 20px;
+								display: block;
+								border-bottom: 1px solid @uou-light-gray;
+								cursor: pointer;
+								color: @gray-dark;
+								text-transform: uppercase;
+								font-size: 13px;
+								text-align: left;
+
+								@media (max-width: @screen-md) {
+									padding: 5px 10px 0 10px;
+									border: none;
+								}
+
+								&:hover {
+									background: @uou-blue;
+									color: @uou-white;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.header-navi {
+		position: relative;
+		background: rgba(255,255,255,.75);
+
+		@media (max-width: @screen-md) {
+			padding-bottom: 10px;
+		}
+
+		.navbar-nav {
+			position: relative;
+			width: 100%;
+
+			@media (max-width: @screen-md) {
+				margin: 0 auto;
+				display: block;
+				width: 250px;
+				text-align: left !important;
+				float: none !important;
+			}
+
+			li {
+				position: relative;
+				display: inline-block;
+				float: none !important;
+
+				@media (max-width: @screen-md) {
+					width: 100%;
+				}
+
+				&:last-child a {
+					padding-right: 0;
+				}
+
+				&.active a {
+					color: @uou-blue;
+				}
+
+				.submenu-toggle {
+					padding-top: 10px;
+					display: none;
+					background: transparent;
+					color: @gray-dark;
+					border: none;
+					cursor: pointer;
+
+					@media (max-width: @screen-md) {
+						float: right;
+						display: block;
+						position: absolute;
+						top: 0;
+						right: 0;
+					}
+				}
+
+				&.has-submenu {
+
+					ul {
+						position: absolute;
+						left: -30px;
+						display: none;
+						width: 220px;
+						background: @uou-white;
+						box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+
+						@media (max-width: @screen-md) {
+							position: relative;
+							left: 0;
+							width: 250px;
+							max-width: 250px;
+							box-shadow: none;
+						}
+
+						ul {
+							margin-top: -60px;
+							left: 220px;
+
+							@media (max-width: @screen-md) {
+								left: 0;
+								margin-top: 0;
+
+								li > a {
+									padding-left: 40px !important;
+								}
+							}
+						}
+
+						li {
+							width: 100%;
+
+							&:last-child a {
+								border-bottom: none;
+							}
+
+							.submenu-toggle {
+								position: absolute;
+								padding-top: 0;
+								top: 20px;
+								right: 25px;
+								display: none;
+								background: transparent;
+								color: @gray-dark;
+								border: none;
+								cursor: pointer;
+
+								@media (max-width: @screen-md) {
+									padding: 0 5px;
+									right: 0;
+									top: 10px;
+									display: block;
+								}
+							}
+
+							a {
+								padding: 20px 30px;
+								display: block;
+								height: auto;
+								border-bottom: 1px solid @uou-light-gray;
+								cursor: pointer;
+								color: @gray-dark;
+								text-transform: uppercase;
+								font-size: 13px;
+								text-align: left;
+
+								@media (max-width: @screen-md) {
+									padding: 10px 0 0 20px;
+									height: auto;
+									border-bottom: none;
+								}
+
+								.submenu-toggle {
+									display: block;
+
+									@media (max-width: @screen-md) {
+										display: none;
+									}
+								}
+
+								&:hover {
+									background: @uou-blue;
+									color: @uou-white;
+
+									@media (max-width: @screen-md) {
+										background: transparent;
+										color: @uou-blue;
+									}
+
+									.submenu-toggle {
+										color: @uou-white;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				a {
+					padding: 36px 40px 36px 0;
+					height: 90px;
+					display: inline-block;
+					font-size: 13px;
+					text-transform: uppercase;
+
+					@media (max-width: @screen-md) {
+						padding: 10px 0 0 0;
+						height: auto;
+					}
+
+					&:hover {
+						background: transparent;
+					}
+
+					@media (max-width: @screen-lg) {
+						padding-right: 20px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.header-logo {
+	position: absolute;
+	left: 50%;
+	margin-left: -80px;
+	top: 0;
+	z-index: 999999;
+
+	@media (max-width: @screen-md) {
+		top: 40px;
+	}
+
+	.header-logo-inner {
+		margin: 0 auto;
+		width: 160px;
+		height: 150px;
+		background: @uou-white;
+		box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	}
+}
+
+#header-toggle {
+	display: none;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	overflow: hidden;
+	cursor: pointer;
+
+	@media (max-width: @screen-md) {
+		display: block;
+	}
+
+	.fa {
+		font-size: 18px;
+	}
+}

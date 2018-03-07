@@ -1,0 +1,95 @@
+/* SHORTCODES */
+
+.custom-list {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.css-table {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.css-table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.preamble {
+	margin-bottom: 90px;
+	text-align: center;
+
+	h3 {
+		margin-top: 0;
+
+		&:after {
+			margin-top: 15px;
+			display: block;
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: normal;
+			line-height: 1;
+			color: @gray-dark;
+			-moz-osx-font-smoothing: grayscale;
+			content:  "\f005 \f005 \f005 \f005 \f005";
+			font-size: 14px;
+		}
+	}
+
+	p {
+		margin: 15px 0 0 0;
+		font-size: 14px;
+		line-height: 30px;
+	}
+
+	&.light {
+
+		h3 {
+			color: @uou-white;
+
+			&:after {
+				color: @uou-white;
+			}
+		}
+
+		p {
+			color: @uou-white;
+		}
+	}
+}
+
+#media-query-breakpoint { 
+	display: none; 
+}
+
+#media-query-breakpoint,
+#media-query-breakpoint span:before { 
+	content: "1200"; 
+}
+
+@media (max-width: 1200px) {
+  #media-query-breakpoint,
+  #media-query-breakpoint span:before {
+    content: "1200";
+  }
+}
+@media (max-width: 991px) {
+  #media-query-breakpoint,
+  #media-query-breakpoint span:before {
+    content: "991";
+  }
+}
+@media (max-width: 768px) {
+  #media-query-breakpoint,
+  #media-query-breakpoint span:before {
+    content: "768";
+  }
+}
+@media (max-width: 480px) {
+  #media-query-breakpoint,
+  #media-query-breakpoint span:before {
+    content: "480";
+  }
+}

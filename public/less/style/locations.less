@@ -1,0 +1,88 @@
+/* LOCATIONS */
+
+.locations {
+	position: relative;
+
+	.locations-top {
+		position: relative;
+		padding-top: 31.25%;
+
+		@media (max-width: @screen-sm) {
+			padding-top: 56.25%;
+		}
+
+		#location-map {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.locations-bottom {
+		position: relative;
+		padding-top: 60px;
+
+		.location-single {
+			padding: 0;
+			float: left;
+			width: 100%;
+			
+			.offices {
+				padding-bottom: 30px;
+
+				.title {
+					margin: 0 0 35px 0;
+				}
+
+				.sub-title {
+					margin: 0 0 20px 0;
+				}
+
+				.location-details {
+					margin-bottom: 30px;
+
+					li {
+						line-height: 30px;
+					}
+
+					@media (max-width: @screen-lg) {
+						height: 120px;
+					}
+
+					@media (max-width: @screen-md) {
+						height: auto;
+					}
+				}
+
+				@media (max-width: @screen-md) {
+					text-align: center;
+				}
+			}
+		}
+
+		.location-thumbnail {
+			position: relative;
+			margin-top: 60px;
+
+			.overlay {
+
+				img {
+					width: 100%;
+				}
+
+				.overlay-shadow {
+					margin: 0;
+					opacity: 1;
+
+					.overlay-content {
+						margin-top: -25px;
+						visibility: visible;
+						opacity: 1;
+						transform: none;
+					}
+				}
+			}
+		}
+	}
+}

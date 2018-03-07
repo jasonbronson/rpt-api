@@ -1,0 +1,94 @@
+/* CALENDAR */
+
+.ui-datepicker {
+	width: 220px;
+	background: @uou-white;
+
+	.ui-datepicker-header {
+		position: relative;
+		padding: 20px 0;
+
+		.ui-datepicker-next {
+			position: absolute;
+			right: 20px;
+			top: 20px;
+			cursor: pointer;
+
+			&:before {
+				display: inline-block;
+				font-family: FontAwesome;
+				font-style: normal;
+				font-weight: normal;
+				line-height: 1;
+				color: @gray-dark;
+				-moz-osx-font-smoothing: grayscale;
+				content:  "\f105";
+			}
+
+			span {
+				display: none;
+			}
+		}
+
+		.ui-datepicker-prev {
+			position: absolute;
+			left: 20px;
+			top: 20px;
+			cursor: pointer;
+
+			&:before {
+				display: inline-block;
+				font-family: FontAwesome;
+				font-style: normal;
+				font-weight: normal;
+				line-height: 1;
+				color: @gray-dark;
+				-moz-osx-font-smoothing: grayscale;
+				content:  "\f104";
+			}
+
+			span {
+				display: none;
+			}
+		}
+
+		
+		.ui-datepicker-title {
+			text-align: center;
+			text-transform: uppercase;
+		}
+	}	
+
+	.ui-datepicker-calendar {
+		width: 100%;
+		border-top: 1px solid @uou-light-gray;
+		border-spacing: 1% 2em;
+
+		thead {
+
+
+			tr {
+
+				th {
+					padding: 5px;
+					font-size: 13px;
+				}
+			}
+		}
+
+		tbody {
+
+			tr {
+
+				td {
+					padding: 5px;
+					text-align: center;
+				}
+			}
+
+			.ui-state-default {
+				color: darken(@uou-light-gray, 15%);
+			}
+		}
+	}
+}

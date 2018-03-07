@@ -1,0 +1,103 @@
+/* SUPERTABS */
+
+.supertabs {
+	position: relative;
+	padding: 60px 0;
+
+	.tab-navigation {
+		padding-right: 0;
+
+		@media (max-width: @screen-md) {
+			padding-right: 15px;
+		}
+
+		ul {
+
+			li {
+				margin-left: 10px;
+				border: 1px solid darken(@uou-light-gray, 5%);
+				border-width: 1px 1px 0 1px;
+
+				&:last-child {
+					border-bottom: 1px solid darken(@uou-light-gray, 5%);
+				}
+
+				&.active {
+					margin-left: 0;
+					border-left: 2px solid @uou-blue;
+
+					a {
+						background: @uou-white;
+					}
+				}
+
+				a {
+					padding: 45px 50px;
+					display: block;
+					background: @uou-light-gray;
+
+					.title {
+						margin: 0 0 3px 0;
+						font-size: 14px;
+					}
+
+					.subtitle {
+						margin: 0;
+						color: @uou-gray;
+						font-size: 13px;
+						font-weight: normal;
+					}
+				}
+			}
+		}
+	}
+	
+	.tab-content {
+		padding-left: 0;
+
+		@media (max-width: @screen-md) {
+			padding-left: 15px;
+		}
+
+		.tab-pane {
+			background-repeat: no-repeat;
+			background-size: cover;
+
+			@media (max-width: @screen-md) {
+				min-height: 350px !important;
+			}
+
+			header {
+				padding: 40px 0 0 50px;
+			
+				.title {
+					margin: 0 0 3px 0;
+					font-size: 14px;
+				}
+
+				.subtitle {
+					margin: 0;
+					color: @uou-gray;
+					font-size: 13px;
+					font-weight: normal;
+				}
+			}
+
+			p {
+				position: absolute;
+				bottom: 35px;
+				left: 50px;
+				right: 50px;
+
+				@media (max-width: @screen-md) {
+					position: relative;
+					padding: 0 50px;
+					margin-top: 50px;
+					left: auto;
+					right: auto;
+					bottom: auto;
+				}
+			}
+		}
+	}
+}

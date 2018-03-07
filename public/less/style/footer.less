@@ -1,0 +1,132 @@
+/* FOOTER */
+
+#footer {
+  position: relative;
+
+  .footer-top {
+  	padding: 30px 0 0 0;
+  	background: @gray-dark url(../img/footer-bg.jpg) no-repeat center; 
+
+  	.logo-footer {
+  		padding: 0 0 30px 0;
+
+  		img {
+  			margin: 0 auto;
+  		}
+  	}
+
+  	.widget {
+  		margin-bottom: 50px;
+
+  		.title {
+  			margin: 0 0 35px 0;
+  			color: @uou-white;
+  		}
+
+  		p {
+  			color: @uou-white;
+  			opacity: .3;
+  		}
+
+  		&.widget-news {
+
+  			ul {
+
+  				li {
+
+  					&:last-child a {
+  						border-bottom: 1px solid rgba(255,255,255,0.1);
+  					}
+
+  					a {
+  						padding: 15px 25px 15px 0;
+  						display: block;
+  						color: @uou-white;
+  						opacity: .7;
+  						font-family: 'open sans';
+  						text-transform: none;
+  						border-top: 1px solid rgba(255,255,255,0.1);
+
+  						&:hover {
+  							color: @uou-white;
+  							opacity: 1;
+  						}
+
+  						&:before {
+  							padding: 0 10px;
+  							content: "\f0da";
+  							font-family: fontAwesome;
+  						}
+  					}
+  				}
+  			}
+  		}
+
+  		&.widget-newsletter {
+
+  			form {
+  				margin: 0 105px 30px 0;
+					
+					input {
+	  				width: 100%;
+	  				background: rgba(255,255,255,0.3);
+	  				color: @uou-white;
+	  			}
+
+	  			button {
+	  				position: absolute;
+	  				top: 50px;
+	  				right: 15px;
+	  				width: 100px;
+	  			}
+  			}
+
+  			.social {
+
+  				.title {
+  					margin: 0 0 20px 0;
+  					line-height: 42px;
+
+  					@media (max-width: @screen-md) {
+  						margin-bottom: 50px;
+  					}
+  				}
+
+  				ul {
+
+  					li {
+
+  						&:last-child {
+  							padding-right: 0;
+  						}
+
+  						a {
+  							font-size: 30px;
+  							color: rgba(255,255,255,.5);
+
+  							&:hover {
+  								color: @uou-white;
+  							}
+  						}
+  					}
+  				}
+  			}
+  		}
+  	}
+  }
+
+  .footer-copyrights {
+  	padding: 20px 0;
+  	text-align: center;
+  	background: @gray-darker;
+
+  	p {
+  		margin: 0;
+  		color: #ccc;
+
+  		a {
+  			color: @uou-white;
+  		}
+  	}
+  }
+}

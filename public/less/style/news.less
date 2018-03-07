@@ -1,0 +1,293 @@
+/* NEWS */
+
+.news {
+	position: relative;
+	padding: 100px 0;
+	background: @uou-light-gray;
+
+	.post {
+		position: relative;
+		margin-bottom: 30px;
+		float: left;
+		width: 100%;
+		background: @uou-white;
+		box-shadow: 0 0 10px rgba(0,0,0,.1);
+
+		.post-thumbnail {
+
+			img {
+				width: 100%;
+			}
+		}
+
+		.post-content {
+			padding: 13px 30px 30px 30px;
+
+			.post-header {
+				padding: 17px 0;
+				margin-bottom: 17px;
+				float: left;
+				width: 100%;
+				border-bottom: 1px solid @uou-light-gray;
+
+				.title {
+					margin: 0;
+					line-height: 21px;
+				}
+
+				.pull-right,
+				.pull-left {
+
+					@media (max-width: @screen-xs) {
+						float: none !important;
+					}
+				}
+
+				.date {
+					display: block;
+					font-size: 14px;
+					font-family: "Libre Baskerville",serif;
+					color: @gray-darker;
+
+					@media (max-width: @screen-xs) {
+						padding-top: 10px;
+					}
+				}
+			}
+
+			.post-meta {
+				margin-bottom: 10px;
+				float: left;
+				width: 100%;
+
+				span {
+					margin-right: 10px;
+
+					a {
+						color: @uou-gray;
+					}
+
+					.fa {
+						margin-right: 3px;
+						color: @uou-blue;
+					}
+				}
+			}
+
+			p {
+				margin-bottom: 20px;
+			}
+
+			.tags-list {
+				margin-bottom: 25px;
+				float: left;
+				width: 100%;
+
+				li {
+					padding: 0;
+					margin: 0 7px 7px 0;
+					float: left;
+
+					a {
+						padding: 5px 10px;
+						display: block;
+						border: 1px solid @uou-light-gray;
+					}
+				}
+			}
+
+			.post-share {
+				padding: 12px 20px;
+				margin-bottom: 25px;
+				float: left;
+				width: 100%;
+				background: @uou-light-gray;
+
+				p {
+					margin: 0;
+					line-height: 26px;
+				}
+
+				.social {
+
+					li {
+
+						a {
+							font-size: 18px;
+
+							&:hover {
+								color: @uou-blue;
+							}
+						}
+					}
+				}
+			}
+
+			.post-comments {
+
+				.post-comments-title {
+					padding-bottom: 20px;
+					margin-bottom: 20px;
+					border-bottom: 1px solid @uou-light-gray;
+				}
+
+				.comments {
+
+					li {
+						list-style: none;
+
+						.comment {
+							position: relative;
+							padding-bottom: 20px;
+							min-height: 100px;
+
+							.avatar {
+								position: absolute;
+								left: 0;
+								top: 0;
+								width: 100px;
+								height: 100px;
+
+								img {
+									width: 100%;
+									height: 100%;
+								}
+							}
+
+							.post-comment-meta {
+								padding-left: 120px;
+								margin-bottom: 3px;
+
+								span {
+									color: @uou-gray;
+									text-transform: uppercase;
+									font-size: 13px;
+
+									a {
+										color: @uou-gray;
+									}
+								}
+							}
+
+							.post-comment-content {
+								padding-left: 120px;
+
+								p {
+									margin: 0 0 10px 0;
+									line-height: 24px;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.post-addcomment {
+
+				.post-addcomment-title {
+					padding-bottom: 20px;
+					margin-bottom: 20px;
+					border-bottom: 1px solid @uou-light-gray;
+				}
+			}
+		}
+	}
+
+	.listing-pagination {
+		position: relative;
+		padding: 20px 30px;
+		float: left;
+		width: 100%;
+		background: @uou-white;
+		box-shadow: 0 0 10px rgba(0,0,0,.1);
+
+		@media (max-width: @screen-md) {
+			margin-bottom: 30px;
+		}
+
+		.pagination {
+			text-align: center;
+
+			li {
+
+				a {
+					padding: 6px 0;
+					display: inline-block;
+					color: @uou-gray;
+				}
+			}
+		}
+	}
+
+	.sidebar {
+		position: relative;
+
+		.sidebar-widget {
+			float: left;
+			width: 100%;
+
+			.search-form {
+				position: relative;
+
+				input {
+					box-shadow: 0 0 10px rgba(0,0,0,.1);
+				}
+
+				button {
+					position: absolute;
+					right: 0;
+					top: 0;
+					background: transparent;
+					border: none;
+				}
+			}
+
+			.widget-title {
+				margin: 25px 0;
+			}
+
+			.list {
+				padding: 20px;
+				background: @uou-white;
+				box-shadow: 0 0 10px rgba(0,0,0,.1);
+
+				li {
+
+					&:first-child a {
+						padding-top: 5px;
+					}
+
+					a {
+						padding: 15px 0;
+						display: block;
+						border-bottom: 1px solid @uou-light-gray;
+
+						&:before {
+							margin-right: 10px;
+							font-family: FontAwesome;
+							font-size: 14px;
+							content: "\f0da";
+							color: @uou-blue;
+						}
+					}
+				}
+			}
+
+			.tags-list {
+
+				li {
+					padding: 0;
+					margin: 0 7px 7px 0;
+					float: left;
+
+					a {
+						padding: 5px 10px;
+						display: block;
+						background: @uou-white;
+						box-shadow: 0 0 10px rgba(0,0,0,.1);
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,198 @@
+.information {
+    padding-top:40px;
+    min-height: 650px;
+    font-family: 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.header-section.autoinsurance {
+    background: url(../img/autoinsurance.jpg) no-repeat center;
+    background-size: cover;
+}
+.header-section.nextitem {
+    background: url(../img/autoinsurance.jpg) no-repeat center;
+    background-size: cover;
+}
+
+
+#resortlist a:hover{
+
+}
+
+#availability-header {
+    font-size: 1.1764705882352942em;
+    background-color: #00335d;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: .4em .7em .6em .7em;
+    margin: 0;
+    text-transform: none;
+}
+#travel-date-header {
+    background-color: #e5e5e5;
+    font-weight: bold;
+    padding: .46153846em 1.38461538em .46153846em 1.38461538em;
+    margin-bottom: .46153846em;
+}
+#travel-date-header {
+    margin-bottom: 1.38461538em;
+}
+#travel-date-header {
+    font-size: .7647058823529411em;
+}
+#rooms-and-rates .segment-title {
+    clear: both;
+    border-radius: 0;
+    padding: 0;
+}
+.segment {
+    background: #fff;
+    padding-bottom:10px;
+}
+.trip-details{
+    padding:10px;
+}
+.trip-includes-details{
+    text-align:right;
+}
+.traveller-information{
+    text-align:right;
+}
+#resort-type-header{
+    text-align:right;
+}
+#selected-price-summary{
+    padding:10px;
+}
+#resort-header{
+    padding:10px;
+}
+#total-selected-price{
+    padding:10px;
+    text-align:right;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: rgba(255, 255, 255, 0.75);
+
+}
+
+.trip-pricing-totals{
+    text-align:right;
+    margin-right:10px;
+}
+
+.bookmystay-layout{
+    text-align:right;
+}
+.bookmystaybtn {
+
+
+}
+.bookmystaybtn, .btn-color {
+    display: inline-block;
+    position: relative;
+    margin: .70588235em .70588235em 0 0;
+    border: 1px solid transparent;
+    border-width: 1px 1px 2px;
+    border-radius: .23529412em;
+    padding: 10px;
+    font-size: 1em;
+    line-height: 1.45;
+    font-weight: 700;
+    cursor: pointer;
+    background: #0065b8;
+    background: linear-gradient(to bottom,#0065b8 0,#0059a2 100%);
+    color: #fff;
+}
+a:hover.bookmystaybtn {
+    color:white;
+}
+
+#bookinglayout {
+    position: relative;
+    height: 100vh;
+    min-height: 1250px;
+    font-family: 'Montserrat', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#pricingpage{
+    padding-top: 200px;
+}
+
+.loading {
+    display:none;
+    position: fixed;
+    left: 40%;
+    top: 50%;
+    width: 200px;
+    height: 100px;
+    z-index: 9999;
+    background-color: #0061B0;
+    color:white;
+    border:1px solid;
+    text-align:center;
+    font-size: 2em;
+}
+
+.depart-date, .num_adults, .num_children, arrival-date, .trip-resort-name, .trip-condo-name{
+    margin-right:0 !important;
+}
+@media (min-width: 767px) {
+
+    #banner #hero-tabs {
+        padding-top: 140px;
+    }
+
+}
+
+@media (max-width: 767px){
+    .container {
+        padding-right: 0px;
+        padding-left: 0px; 
+        margin-right: 0px; 
+        margin-left: 0px; 
+    }
+}
+
+.information{
+    min-height: 500px;
+}
+
+.form-control {
+    /*height: 24px;*/
+    padding: 0px;
+}
+.book-content{
+    min-height: 800px;
+}
+.align-left{
+    float:left;
+    margin-left: 10px;
+}
+.cc-ccv{
+    width: 50%;
+}
+.smallfont{
+    font-size: 11px;
+}
+.bluelink{
+    color: #004488;
+}
+
+.modalrow{
+    padding: 10px;
+    text-align: center;
+}

@@ -1,0 +1,58 @@
+/* FORMS */
+
+.default-form {
+
+	input {
+		padding: 15px 20px;
+		width: 100%;
+		height: 50px;
+		border-radius: 2px;
+		text-transform: uppercase;
+		font-size: 13px;
+		background: @uou-white;
+		border: 1px solid @uou-light-gray;
+		font-family: @font-family-sans-serif;
+	}
+
+	select {
+		display: none;
+	}
+
+	textarea {
+		padding: 15px 20px;
+		width: 100%;
+		height: 150px;
+		border-radius: 2px;
+		text-transform: uppercase;
+		font-size: 13px;
+		background: @uou-white;
+		border: 1px solid @uou-light-gray;
+		font-family: @font-family-sans-serif;
+	}
+
+	button {
+		padding: 15px 20px;
+		height: 50px;
+		border: 1px solid rgba(255,255,255,.5);
+		border-radius: 2px;
+		text-transform: uppercase;
+		font-size: 13px;
+		line-height: 1.5em;
+		.transition(.2s ease-in);
+		font-family: @font-family-sans-serif;
+
+		&.btn-transparent {
+			background: transparent;
+			color: @uou-white;
+
+			&:hover {
+				background: @uou-white;
+				color: @gray-dark;
+			}
+		}
+
+		&.btn-blue {
+			background: @uou-blue;
+		}
+	}
+}

@@ -1,0 +1,485 @@
+/* ROOM */
+
+#room {
+	position: relative;
+	padding: 0 0 60px 0;
+	background: lighten(@uou-light-gray, 1%);
+
+	.room-wrapper {
+		margin-top: -70px;
+		float: left;
+		width: 100%;
+		background: @uou-white;
+		box-shadow: 0 0 10px rgba(0,0,0,.1);
+
+		.sidebar {
+			padding: 0;
+			box-shadow: 0 0 10px rgba(0,0,0,.1);
+
+			#map {
+				width: 100%;
+				height: 285px;
+			}
+
+			.widget-title {
+				padding: 30px;
+				margin: 0;
+				border: 1px solid @uou-light-gray;
+				border-width: 1px 0;
+			}
+
+			.widget-content {
+				padding: 30px;
+
+				form {
+					
+					span {
+						position: relative;
+						display: block;
+						margin-bottom: 20px;
+
+						.fa {
+							position: absolute;
+							right: 25px;
+							top: 18px;
+							color: @uou-gray;
+							cursor: pointer;
+						}
+
+						select {
+							display: none;
+						}
+
+						.select-clone {
+							position: absolute;
+							left: 0;
+							right: 0;
+							display: none;
+							background: @uou-white;
+							border: 1px solid @uou-light-gray;
+							border-width: 0 1px 1px 1px;
+							z-index: 99;
+
+							li {
+								padding: 20px;
+								display: block;
+								border-bottom: 1px solid @uou-light-gray;
+								cursor: pointer;
+								color: @gray-dark;
+								text-transform: uppercase;
+								font-size: 13px;
+								text-align: left;
+
+								&:hover {
+									background: @uou-blue;
+									color: @uou-white;
+								}
+
+								&:last-child {
+									border-bottom: none;
+								}
+							}
+						}
+					}
+
+					h5 {
+						font-family: "Libre Baskerville",serif;
+						color: @gray-darker;
+						text-transform: none;
+						font-style: italic;
+						font-weight: normal;
+
+						span {
+							display: inline-block;
+							float: right;
+						}
+					}
+
+					.btn {
+						width: 100%;
+					}
+				}
+
+				&.offers-content {
+					padding: 30px 30px 10px 30px;
+
+					ul {
+						
+						li {
+							margin-bottom: 20px;
+							min-height: 50px;
+
+							.title {
+								padding-left: 70px;
+								margin: 0 0 5px 0;
+								display: block;
+							}
+
+							.price {
+								padding-left: 20px;
+								font-family: "Libre Baskerville",serif;
+								color: @gray-darker;
+
+								@media (max-width: @screen-lg-desktop) {
+									font-size: 11px;
+								}
+							}
+
+							.thumbnail {
+								float: left;
+								width: 50px;
+								height: 50px;
+
+								img {
+									width: 100%;
+									height: 100%;
+								}
+							}
+						}
+					}
+				}
+
+				.contact-list {
+
+					li {
+						margin-bottom: 10px;
+
+						&:last-child {
+							margin-bottom: 0;
+						}
+
+						.fa {
+							color: @gray-darker;
+						}
+
+						span {
+							margin-left: 10px;
+							color: @uou-gray;
+							font-family: @font-family-sans-serif;
+						}
+					}
+				}
+			}
+		}
+
+		.room-content {
+			padding: 0;
+
+			.room-general {
+				padding: 50px 50px 35px 50px;
+				border-bottom: 1px solid @uou-light-gray;
+
+				img {
+					margin-bottom: 30px;
+					width: 100%;
+				}
+
+				header {
+					display: inline-block;
+					width: 100%;
+
+					.pull-right,
+					.pull-left {
+
+						@media (max-width: @screen-xs) {
+							float: none !important;
+						}
+					}
+
+					.title {
+						margin: 0 0 0 0;
+						font-size: 30px;
+						line-height: 30px;
+					}
+
+					.tags {
+						padding-top: 15px;
+
+						&.pt-0 {
+							padding-top: 0;
+						}
+
+						li {
+
+							&:after {
+								padding-left: 10px;
+								color: @uou-gray;
+								content: "/";
+							}
+
+							&:last-child:after {
+								display: none;
+							}
+
+							&:first-child {
+								padding-left: 0;
+							}
+
+							a {
+								color: @uou-gray;
+
+								&:hover {
+									color: darken(@uou-gray, 10%);
+								}
+							}
+						}
+					}
+
+					.price {
+						display: block;
+						font-size: 30px;
+						font-family: "Libre Baskerville",serif;
+						color: @gray-darker;
+
+						@media (max-width: @screen-xs) {
+							padding-top: 10px;
+						}
+					}
+				}
+			}
+
+			.room-tabs {
+				padding: 50px;
+				border-bottom: 1px solid @uou-light-gray;
+			}
+
+			.room-about {
+				padding: 50px;
+				border-bottom: 1px solid @uou-light-gray;
+
+				.title-section {
+					margin: 0 0 40px 0;
+					font-size: 18px;
+				}
+
+				p {
+					margin: 0;
+				}
+			}
+
+			.room-tabs {
+
+				.nav-tabs {
+					border-bottom: 1px solid @gray-darker;
+
+					li {
+						margin: 0;
+						width: 160px;
+
+						@media (max-width: @screen-lg) {
+							width: 150px;
+						}
+
+						@media (max-width: @screen-md) {
+							width: 100%;
+						}
+
+						&.active a {
+							background: @gray-darker;
+							border-color: @gray-darker;
+						}
+
+						a {
+							padding: 15px 10px;
+							text-align: center;
+							background: darken(@uou-light-gray, 9%);
+							border-color: darken(@uou-light-gray, 9%);
+							color: @uou-white;
+						}
+					}
+				}
+
+				.tab-content {
+					padding-top: 40px;
+
+					.images-gallery {
+						display: inline-block;
+						width: 100%;
+
+						.img-single {
+
+							@media (max-width: @screen-md) {
+								margin-bottom: 30px;
+
+								img {
+									width: 100%;
+								}
+							}
+						}
+					}
+
+					.reviews-list {
+
+						li {
+							position: relative;
+
+							.thumbnail {
+								position: absolute;
+								width: 128px;
+								height: 128px;
+
+								@media (max-width: @screen-xs) {
+									width: 64px;
+									height: 64px;
+								}
+
+								img {
+									width: 100%;
+									height: 100%;
+								}
+							}
+
+							.review-content {
+								padding-left: 145px;
+
+								@media (max-width: @screen-xs) {
+									padding-left: 80px;
+								}
+
+								header {
+									margin-bottom: 5px;
+
+									h5 {
+										margin: 0 0 2px 0;
+									}
+
+									.stars {
+
+										li {
+											padding: 0 .5px;
+
+											.fa {
+												color: @uou-yellow;
+											}
+										}
+									}
+								}
+
+								p {
+									margin: 0;
+								}
+							}
+						}
+					}
+
+					.listing-facitilities {
+						display: inline-block;
+						width: 100%;
+
+						.facilities-list {
+
+							li {
+								line-height: 30px;
+
+								span {
+									margin-left: 5px;
+									color: @uou-gray;
+									text-transform: uppercase;
+									font-size: 13px;
+									font-family: @font-family-sans-serif;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.room-related {
+				padding: 50px 35px 20px 35px;
+				display: inline-block;
+				width: 100%;
+
+				.title-section {
+					margin: 0 0 50px 15px;
+				}
+
+				.listing-room-grid {
+					position: relative;
+					padding: 5px;
+					float: left;
+					width: 100%;
+					margin-bottom: 30px;
+					text-align: center;
+					background: @uou-white;
+					box-shadow: 0 0 10px rgba(0,0,0,.1);
+
+					.thumbnail {
+						position: relative;
+						width: 100%;
+						height: 100%;
+
+						img {
+							width: 100%;
+							height: 100%;
+						}
+					}
+
+					header {
+						padding-bottom: 17px;
+						margin-bottom: 17px;
+						float: left;
+						width: 100%;
+						border-bottom: 1px solid @uou-light-gray;
+						
+						.title {
+							margin: 30px 0 5px 0;
+						}
+
+						.tags {
+
+							li {
+
+								&:after {
+									padding-left: 10px;
+									color: @uou-gray;
+									content: "/";
+								}
+
+								&:last-child:after {
+									display: none;
+								}
+
+								&:first-child {
+									padding-left: 0;
+								}
+
+								a {
+									color: @uou-gray;
+
+									&:hover {
+										color: darken(@uou-gray, 10%);
+									}
+								}
+							}
+						}
+					}
+
+					.price {
+						margin-bottom: 20px;
+						float: left;
+						width: 100%;
+						display: block;
+						font-size: 18px;
+						font-family: "Libre Baskerville",serif;
+						color: @gray-darker;
+
+						@media (max-width: @screen-xs) {
+							padding-top: 10px;
+						}
+					}
+
+					.btn {
+						margin-bottom: 30px;
+					}
+
+					&:hover {
+
+						.thumbnail .owl-buttons {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
+}

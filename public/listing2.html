@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Hotel Petra Listing (grid)</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/owl.carousel.css">
+
+  <!-- Google Font -->
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400italic' rel='stylesheet' type='text/css'>
+
+  <!--[if IE 9]>
+    <script src="js/media.match.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<!-- Start Main-Wrapper -->
+<div id="main-wrapper">
+  
+  <!-- Start Header -->
+  <header id="header">
+    <div class="header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-12">
+            <ul class="contact-info custom-list list-inline">
+              <li><i class="fa fa-phone"></i><span>Reserve by phone (480) 993-0333 or (520) 232-2143</span></li>
+              <!--li><i class="fa fa-phone"></i><span></span></li-->
+            </ul>
+          </div>
+          <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 text-right pull-right">
+            <div-- class="contact-right">
+              <ul class="social custom-list list-inline">
+                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+              </ul>
+              <div class="header-login">
+                <button class="login-toggle header-btn"><i class="fa fa-power-off"></i> Login</button>
+                <div class="header-form">
+                  <form action="index.php" class="default-form">
+                    <p class="alert-message warning"><i class="ico fa fa-exclamation-circle"></i> All fields are required! <i class="fa fa-times close"></i></p>
+                    <p class="form-row">
+                      <input class="required email" type="text" placeholder="Email">
+                    </p>
+                    <p class="form-row">
+                      <input class="required" type="password" placeholder="Password">
+                    </p>
+                    <p class="form-row">
+                      <button class="submit-btn button btn-blue"><i class="fa fa-power-off"></i> Login</button>
+                    </p>
+                    <p class="form-row forgot-password">
+                      <a href="#">Forgot Password?</a>
+                    </p>
+                    <p class="form-row register">
+                      <a href="#">Register</a>
+                    </p>
+                  </form>
+                </div>
+              </div>
+              <!--div class="header-language">
+                <button class="header-btn"><i class="fa fa-globe"></i>EN</button>
+                <nav class="header-nav">
+                  <ul class="custom-list">
+                    <li class="active"><a href="#">EN</a></li>
+                    <li><a href="#">DE</a></li>
+                    <li><a href="#">FR</a></li>
+                    <li><a href="#">IT</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header-navi">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" id="bs-example-navbar-collapse-1">
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-12">
+                <ul class="nav navbar-nav main-nav">
+                  <li><a href="index.php">Home</a></li>
+                  <li><a href="#">Resorts</a></li>
+                  <li><a href="#">Hotels</a></li>
+                  <!--li class="has-submenu active">
+                    <a href="#">Reservations</a>
+                    <ul class="sub-menu custom-list">
+                      <li><a href="listing.html">Rooms List View</a></li>
+                      <li><a href="listing2.html">Rooms Grid View</a>
+                      </li>
+                      <li class="has-submenu">
+                        <a href="#">Luxury Apartments</a>
+                        <ul class="sub-menu custom-list">
+                          <li><a href="room4.html">Luxury Apartment 1</a></li>
+                          <li><a href="room.html">Luxury Apartment 2</a></li>
+                        </ul>
+                      </li>
+                      <li class="has-submenu">
+                        <a href="#">Deluxe Suites</a>
+                        <ul class="sub-menu custom-list">
+                          <li><a href="room2.html">Deluxe Suite 1</a></li>
+                          <li><a href="room3.html">Deluxe Suite 2</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li-->
+
+                  <!--li><a href="staff.html">Our Staff</a></li>
+                  <li><a href="locations.html">Locations</a></li-->
+                </ul>
+              </div>
+              <div class="col-lg-5 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-12 col-sm-offset-0">
+                <ul class="nav navbar-nav main-nav pull-right text-right">
+
+                  <li><a href="#">Auto Insurance</a></li>
+                  <!--li class="has-submenu">
+                    <a href="news.html">News</a>
+                    <ul class="sub-menu custom-list">
+                      <li><a href="single_post.html">Single Post</a></li>
+                    </ul>
+                  </li-->
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <!-- Start Header-Toggle -->
+  <div id="header-toggle">
+    <i class="fa fa-bars"></i>
+  </div>
+  <!-- End Header-Toggle -->
+
+  <!-- Start Header-Logo -->
+  <div class="header-logo">
+    <div class="header-logo-inner">
+      <div class="css-table">
+        <div class="css-table-cell">
+          <a href="#">
+            <img src="img/logo.png" alt="" class="img-responsive center-block">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Header-Logo -->
+
+  <!-- Start Header-Section -->
+  <section class="header-section listing">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="title-section pull-left">
+            Search Result
+          </h3>
+          <ul class="breadcrumbs custom-list list-inline pull-right">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Search Result</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header-Section -->
+
+  <section id="listing">
+    <div class="container">
+      <div class="row">
+        <div class="sidebar col-md-3">
+          <div class="fleets-filters toggle-container">
+            <h5 class="toggle-title">Filters</h5>
+            <aside class="toggle-content">
+              <div class="search">
+                <form action="#" class="default-form">
+                  <input type="text" placeholder="Search">
+                  <i class="fa fa-search"></i>
+                </form>
+              </div>
+              <div class="general">
+                <h5 class="title">General</h5>
+                <form action="#" class="default-form">
+                  <span class="arrival calendar">
+                    <input type="text" name="arrival" placeholder="Arrival" data-dateformat="m/d/y">
+                    <i class="fa fa-calendar"></i>
+                  </span>
+                  <span class="departure calendar">
+                    <input type="text" name="departure" placeholder="Departure" data-dateformat="m/d/y">
+                    <i class="fa fa-calendar"></i>
+                  </span>
+                  <span class="adults select-box">
+                    <select name="adults" data-placeholder="Adults">
+                      <option>Adults</option>
+                      <option value="1">1 adult</option>
+                      <option value="2">2 adults</option>
+                      <option value="3">3 adults</option>
+                      <option value="4">4 adults</option>
+                    </select>
+                  </span>
+                  <span class="children select-box">
+                    <select name="children" data-placeholder="Children">
+                      <option>Children</option>
+                      <option value="1">1 children</option>
+                      <option value="2">2 childrens</option>
+                      <option value="3">3 childrens</option>
+                      <option value="4">4 childrens</option>
+                    </select>
+                  </span>
+                </form>
+                <h5 class="title">Price</h5>
+                <div class="slider-range-container box-row">
+                  <div class="slider-range" data-min="2000" data-max="100000" data-step="2000" data-default-min="2000" data-default-max="50000" data-currency="$">
+                  </div>
+                  <div class="clearfix">
+                    <input type="text" class="range-from" value="$2000">
+                    <input type="text" class="range-to" value="$50000">
+                  </div>
+                </div>
+                <h5 class="title">Amenities</h5>
+                <ul class="custom-list additional-filter-list clearfix">
+                  <li>
+                    <span class="checkbox-input">
+                      <input id="additional-filter-ac" checked="checked" type="checkbox">
+                      <label for="additional-filter-ac">AC</label>
+                    </span>
+                  </li> 
+                  <li>
+                    <span class="checkbox-input">
+                      <input id="additional-filter-hotbath" checked="checked" type="checkbox">
+                      <label for="additional-filter-hotbath">Hotbath</label>
+                    </span>
+                  </li> 
+                  <li>
+                    <span class="checkbox-input">
+                      <input id="additional-filter-parking" type="checkbox">
+                      <label for="additional-filter-parking">Parking</label>
+                    </span>
+                  </li> 
+                  <li>
+                    <span class="checkbox-input">
+                      <input id="additional-filter-room-service" type="checkbox">
+                      <label for="additional-filter-room-service">Room Service</label>
+                    </span>
+                  </li> 
+                  <li>
+                    <span class="checkbox-input">
+                      <input id="additional-filter-safe" checked="checked" type="checkbox">
+                      <label for="additional-filter-safe">Safe</label>
+                    </span>
+                  </li> 
+                  <li>
+                    <span class="checkbox-input">
+                      <input id="additional-filter-tv" checked="checked" type="checkbox">
+                      <label for="additional-filter-tv">TV</label>
+                    </span>
+                  </li> 
+                  <li>
+                    <span class="checkbox-input active">
+                      <input id="additional-filter-wifi" checked="checked" type="checkbox">
+                      <label for="additional-filter-wifi">Wifi</label>
+                    </span>
+                  </li> 
+                </ul>
+              </div>
+              <div class="buttons">
+                <button class="btn btn-transparent-gray pull-left">
+                  Filter
+                </button>
+                <button class="btn btn-transparent-gray pull-right">
+                  Reset
+                </button>
+              </div>
+            </aside>
+          </div>
+          <div class="special-offers sidebar">
+            <h5 class="title-section">Special Offers</h5>
+            <div class="offers-content">
+              <ul class="custom-list">
+                <li>
+                  <div class="thumbnail"><img src="img/listing-1.jpg" alt="" class="img-responsive"></div>
+                  <h5 class="title"><a href="#">King Suite</a></h5>
+                  <span class="price">from $99/day</span>
+                </li>
+                <li>
+                  <div class="thumbnail"><img src="img/listing-1.jpg" alt="" class="img-responsive"></div>
+                  <h5 class="title"><a href="">King Suite</a></h5>
+                  <span class="price">from $99/day</span>
+                </li>
+                <li>
+                  <div class="thumbnail"><img src="img/listing-1.jpg" alt="" class="img-responsive"></div>
+                  <h5 class="title"><a href="">King Suite</a></h5>
+                  <span class="price">from $99/day</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="listing-content col-md-9">
+          <div class="listing-pagination">
+            <h5 class="title pull-left">Available Room</h5>
+            <span class="adults select-box pull-right">
+              <select name="perpage" data-placeholder="9 Per Page">
+                <option>Per Page</option>
+                <option value="1">10 Per Page</option>
+                <option value="2">11 Per Page</option>
+                <option value="3">12 Per Page</option>
+                <option value="4">13 Per Page</option>
+              </select>
+            </span>
+            <ul class="pagination custom-list list-inline pull-right">
+              <li class="prev"><a href="#">Prev</a></li>
+              <li class="number"><a href="#">1</a></li>
+              <li class="number"><a href="#">2</a></li>
+              <li class="number"><a href="#">3</a></li>
+              <li class="next"><a href="#">Next</a></li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="listing-room-grid">
+                <div class="thumbnail">
+                  <div class="thumbnail-slider">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                  </div>
+                </div>
+                <div class="listing-room-content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <header>
+                        <h5 class="title">
+                          <a href="#">King Suite</a>
+                        </h5>
+                        <ul class="tags custom-list list-inline">
+                          <li><a href="#">1 Bed</a></li>
+                          <li><a href="#">2 People</a></li>
+                          <li><a href="#">Sea View</a></li>
+                        </ul>
+                      </header>
+                      <span class="price">
+                        from $99/day
+                      </span>
+                      <button class="btn btn-transparent-gray">
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-room-grid">
+                <div class="thumbnail">
+                  <div class="thumbnail-slider">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                  </div>
+                </div>
+                <div class="listing-room-content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <header>
+                        <h5 class="title">
+                          <a href="#">King Suite</a>
+                        </h5>
+                        <ul class="tags custom-list list-inline">
+                          <li><a href="#">1 Bed</a></li>
+                          <li><a href="#">2 People</a></li>
+                          <li><a href="#">Sea View</a></li>
+                        </ul>
+                      </header>
+                      <span class="price">
+                        from $99/day
+                      </span>
+                      <button class="btn btn-transparent-gray">
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-room-grid">
+                <div class="thumbnail">
+                  <div class="thumbnail-slider">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                  </div>
+                </div>
+                <div class="listing-room-content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <header>
+                        <h5 class="title">
+                          <a href="#">King Suite</a>
+                        </h5>
+                        <ul class="tags custom-list list-inline">
+                          <li><a href="#">1 Bed</a></li>
+                          <li><a href="#">2 People</a></li>
+                          <li><a href="#">Sea View</a></li>
+                        </ul>
+                      </header>
+                      <span class="price">
+                        from $99/day
+                      </span>
+                      <button class="btn btn-transparent-gray">
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="listing-room-grid">
+                <div class="thumbnail">
+                  <div class="thumbnail-slider">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                  </div>
+                </div>
+                <div class="listing-room-content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <header>
+                        <h5 class="title">
+                          <a href="#">King Suite</a>
+                        </h5>
+                        <ul class="tags custom-list list-inline">
+                          <li><a href="#">1 Bed</a></li>
+                          <li><a href="#">2 People</a></li>
+                          <li><a href="#">Sea View</a></li>
+                        </ul>
+                      </header>
+                      <span class="price">
+                        from $99/day
+                      </span>
+                      <button class="btn btn-transparent-gray">
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-room-grid">
+                <div class="thumbnail">
+                  <div class="thumbnail-slider">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                  </div>
+                </div>
+                <div class="listing-room-content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <header>
+                        <h5 class="title">
+                          <a href="#">King Suite</a>
+                        </h5>
+                        <ul class="tags custom-list list-inline">
+                          <li><a href="#">1 Bed</a></li>
+                          <li><a href="#">2 People</a></li>
+                          <li><a href="#">Sea View</a></li>
+                        </ul>
+                      </header>
+                      <span class="price">
+                        from $99/day
+                      </span>
+                      <button class="btn btn-transparent-gray">
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-room-grid">
+                <div class="thumbnail">
+                  <div class="thumbnail-slider">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                  </div>
+                </div>
+                <div class="listing-room-content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <header>
+                        <h5 class="title">
+                          <a href="#">King Suite</a>
+                        </h5>
+                        <ul class="tags custom-list list-inline">
+                          <li><a href="#">1 Bed</a></li>
+                          <li><a href="#">2 People</a></li>
+                          <li><a href="#">Sea View</a></li>
+                        </ul>
+                      </header>
+                      <span class="price">
+                        from $99/day
+                      </span>
+                      <button class="btn btn-transparent-gray">
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="listing-room-grid">
+                <div class="thumbnail">
+                  <div class="thumbnail-slider">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                  </div>
+                </div>
+                <div class="listing-room-content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <header>
+                        <h5 class="title">
+                          <a href="#">King Suite</a>
+                        </h5>
+                        <ul class="tags custom-list list-inline">
+                          <li><a href="#">1 Bed</a></li>
+                          <li><a href="#">2 People</a></li>
+                          <li><a href="#">Sea View</a></li>
+                        </ul>
+                      </header>
+                      <span class="price">
+                        from $99/day
+                      </span>
+                      <button class="btn btn-transparent-gray">
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-room-grid">
+                <div class="thumbnail">
+                  <div class="thumbnail-slider">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                  </div>
+                </div>
+                <div class="listing-room-content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <header>
+                        <h5 class="title">
+                          <a href="#">King Suite</a>
+                        </h5>
+                        <ul class="tags custom-list list-inline">
+                          <li><a href="#">1 Bed</a></li>
+                          <li><a href="#">2 People</a></li>
+                          <li><a href="#">Sea View</a></li>
+                        </ul>
+                      </header>
+                      <span class="price">
+                        from $99/day
+                      </span>
+                      <button class="btn btn-transparent-gray">
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-room-grid">
+                <div class="thumbnail">
+                  <div class="thumbnail-slider">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                    <img src="img/listing-1.jpg" alt="" class="img-responsive">
+                  </div>
+                </div>
+                <div class="listing-room-content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <header>
+                        <h5 class="title">
+                          <a href="#">King Suite</a>
+                        </h5>
+                        <ul class="tags custom-list list-inline">
+                          <li><a href="#">1 Bed</a></li>
+                          <li><a href="#">2 People</a></li>
+                          <li><a href="#">Sea View</a></li>
+                        </ul>
+                      </header>
+                      <span class="price">
+                        from $99/day
+                      </span>
+                      <button class="btn btn-transparent-gray">
+                        Read More
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="listing-pagination footer">
+            <ul class="pagination custom-list list-inline text-center no-margin">
+              <li class="prev"><a href="#">Prev</a></li>
+              <li class="number"><a href="#">1</a></li>
+              <li class="number"><a href="#">2</a></li>
+              <li class="number"><a href="#">3</a></li>
+              <li class="next"><a href="#">Next</a></li>
+            </ul>
+          </div>
+          <div class="special-offers listing">
+            <h5 class="title-section">Special Offers</h5>
+            <div class="offers-content">
+              <ul class="custom-list">
+                <li>
+                  <div class="thumbnail"><img src="img/listing-1.jpg" alt="" class="img-responsive"></div>
+                  <h5 class="title"><a href="#">King Suite</a></h5>
+                  <span class="price">from $99/day</span>
+                </li>
+                <li>
+                  <div class="thumbnail"><img src="img/listing-1.jpg" alt="" class="img-responsive"></div>
+                  <h5 class="title"><a href="">King Suite</a></h5>
+                  <span class="price">from $99/day</span>
+                </li>
+                <li>
+                  <div class="thumbnail"><img src="img/listing-1.jpg" alt="" class="img-responsive"></div>
+                  <h5 class="title"><a href="">King Suite</a></h5>
+                  <span class="price">from $99/day</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Start Footer -->
+  <footer id="footer">
+
+    <!-- Start Footer-Top -->
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 logo-footer">
+            <img src="img/logo-footer.png" alt="" class="img-responsive">
+          </div>
+          <div class="col-md-4 widget widget-about">
+            <h5 class="title">
+              About Us
+            </h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Etiam sit amet lectus quis est congue mollis.</p>
+          </div>
+          <div class="col-md-4 widget widget-news">
+            <h5 class="title">
+              Latest News
+            </h5>
+            <ul class="custom-list">
+              <li><a href="#">Lorem ipsum dolor</a></li>
+              <li><a href="#">Proin nibh augue suscipit scelerisque</a></li>
+              <li><a href="#">Etiam pellentesque aliquet tellus</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 widget widget-newsletter">
+            <h5 class="title">
+              Newsletter
+            </h5>
+            <form action="#" class="default-form">
+              <input type="text" placeholder="Your email">
+              <button class="btn btn-transparent pull-right">Sign Up</button>
+            </form>
+            <div class="social">
+              <h5 class="title pull-left">
+                Stay in touch
+              </h5>
+              <ul class="custom-list list-inline pull-right">
+                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Footer-Top -->
+
+    <!-- Start Footer-Copyrights -->
+    <div class="footer-copyrights">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p>Copyright 2015 © PetraHotel. All rights reserved. Powered by <a href="#">UOUapps</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Footer-Copyrights -->
+
+  </footer>
+  <!-- End Footer -->
+
+</div>
+<!-- End Main-Wrapper -->
+
+
+<!-- Scripts -->
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/scripts.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<script src="js/gmap3.min.js"></script>
+<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="js/jquery.ba-outside-events.min.js"></script>
+<script src="js/jquery.vide.min.js"></script>
+<script src="js/tab.js"></script>
+<script src="js/transition.js"></script>
+<script src="js/jquery.matchHeight-min.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+/* OPINIONS */
+
+.opinions {
+	position: relative;
+	padding: 100px 0;
+	background: @uou-light-gray;
+
+	.customers-list {
+
+		.customer-testimonial {
+			position: relative;
+			margin-bottom: 30px;
+			float: left;
+			width: 100%;
+			background: @uou-white;
+			box-shadow: 0 0 10px rgba(0,0,0,.1);
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			.logo {
+				position: absolute;
+			    width: 170px;
+			    height: 100%;
+			    text-align: center;
+			    background: @uou-blue;
+			    overflow: hidden;
+
+			    img {
+			    	margin: 0 auto;
+			    	max-width: 170px;
+			    	max-height: 194px;
+			    }
+
+			    @media (max-width: @screen-xs) {
+			    	position: relative;
+			    	width: 100%;
+			    	height: 194px;
+			    }
+			}
+
+			.customer-testimonial-content {
+				padding: 13px 30px 0px 195px;
+				float: left;
+				width: 100%;
+				min-height: 194px;
+
+				@media (max-width: @screen-xs) {
+					padding: 13px 30px 25px 30px;
+				}
+
+				.customer-testimonial-header {
+					padding: 17px 0;
+					margin-bottom: 17px;
+					float: left;
+					width: 100%;
+					border-bottom: 1px solid @uou-light-gray;
+
+					.name {
+						margin: 0;
+						line-height: 21px;
+					}
+
+					.pull-right,
+					.pull-left {
+
+						@media (max-width: @screen-xs) {
+							float: none !important;
+						}
+					}
+
+					.position {
+						display: block;
+						font-size: 14px;
+						font-family: "Libre Baskerville",serif;
+						color: @gray-darker;
+
+						@media (max-width: @screen-xs) {
+							padding-top: 10px;
+						}
+					}
+				}
+
+				blockquote {
+					padding: 0;
+					margin: 0;
+					float: left;
+					width: 100%;
+					font-size: 15px;
+					font-style: italic;
+					line-height: 30px;
+					border: none;
+				}
+			}
+		}
+	}
+}

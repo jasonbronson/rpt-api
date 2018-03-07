@@ -1,0 +1,95 @@
+/* TESTIMONIALS */
+
+.testimonials {
+	position: relative;
+	padding: 100px 0 70px 0;
+
+	#video_testimonials {
+		position: absolute;
+		top: 0px;
+		height: 100%;
+		width: 100%;
+		z-index: 0;
+	}
+
+	.video_gradient {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px;
+		background: rgba(19, 96, 132, 0.7);
+		z-index: 0;
+	}
+
+	.preamble {
+		margin-bottom: 15px;
+	}
+
+	blockquote {
+		padding: 0px;
+		margin: 20px 0px 70px 0;
+		font-size: 15px;
+		line-height: 30px;
+		text-align: center;
+		border: medium none;
+		z-index: 99;
+		color: @uou-white;
+		font-family: "Libre Baskerville",serif;
+
+		cite {
+			margin-bottom: 25px;
+			display: inline-block;
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 18px;
+			font-family: @font-family-base;
+			font-style: normal;
+			
+			span {
+			   	display: block;
+			    font-size: 14px;
+			    line-height: 14px;
+			}
+		}
+
+		.stars {
+			margin-bottom: 20px;
+			line-height: 25px;
+		}
+
+		&:after {
+			margin: 25px auto 0px;
+			display: block;
+			font: 28px/28px "FontAwesome";
+			text-align: center;
+			color: rgba(255, 255, 255, 0.75);
+			content: "\f10e";
+		}
+	}
+
+	.owl-pagination {
+		text-align: center;
+
+		.owl-page {
+			cursor: pointer;
+			border: 2px solid @uou-white;
+			margin-right: 2px;
+			margin-left: 2px;
+			display: inline-block;
+
+			&.active span {
+				background: @uou-white;
+			}
+
+			span {
+				display: block;
+				width: 10px;
+				height: 10px;
+				background: transparent;
+				padding: 2px;
+				margin: 2px;
+			}
+		}
+	}
+}
