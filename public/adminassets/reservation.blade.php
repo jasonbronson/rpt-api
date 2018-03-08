@@ -72,7 +72,7 @@
                                                       }
                                                       ?>
                                                       <tr>
-                                                          <td nowrap="nowrap"><input type="hidden" name="Season{{$count}}" value="{{$value['Season']}}">{{$value['Season']}}</td>
+                                                          <td><input type="hidden" name="Season{{$count}}" value="{{$value['Season']}}">{{$value['Season']}}</td>
                                                           <td> <input type="hidden" name="Date{{$count}}" value="{{$date}}"> {{$date}}</td>
                                                           <td align="right">$<input type="text" name="Price{{$count}}" value="{{$value['Price']}}" size="8"> </td>
                                                           <td align="right">$<input type="text" name="Extra{{$count}}" value="{{$value['Extra']}}" size="8"></td>
