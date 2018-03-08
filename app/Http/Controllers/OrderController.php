@@ -112,6 +112,7 @@ class OrderController extends Controller
                 $request->session()->put("ordernumber", $orderSaved);
                 if( !is_numeric($orderSaved) ){
                     \Notification::send(Users::first(), new NotifyErrors("Could not save users order ".print_r($order, true) ));
+                    Log::debug("order saved was not numeric");
                 }else{
                     //send out emails 
                     $order = array_merge($order, $reservationInfo, $rateData);
@@ -120,7 +121,7 @@ class OrderController extends Controller
                     $order['now_date'] = date("Y-m-d");
                     $order['now_time'] = date("H:m");
                     $order['cc_type'] = "Undefined";
-                    
+                    Log::debug("order saved success");
                     //var_dump($order);
                     $this->reservationEmails->sendEmails($order);
         
