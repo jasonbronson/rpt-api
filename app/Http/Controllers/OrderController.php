@@ -48,8 +48,8 @@ class OrderController extends Controller
         $params = array("condo", "adults", "kids", "start", "stop");
         foreach ($params as $key => $value) {
             if (strlen($value) < 15) {
-                $temp[$value] = $_REQUEST[$value];
-                $$value = $_REQUEST[$value];
+                $temp[$value] = isset($_REQUEST[$value])?$_REQUEST[$value]:null;
+                $$value = isset($_REQUEST[$value])?$_REQUEST[$value]:null;
             }
         }
         $params = array("fname", "lname", "email", "dayphone", "eveningphone", "fax", "how_did_you_hear", "address1", "address2", "city","state", "zip", "country", 
