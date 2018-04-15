@@ -15,19 +15,20 @@ class MerchantAccount2
 
     public function ChargeCreditCard($order){
 
+        
         $url['card_number'] = $order['cc_num'];
         $url['card_expire'] = $order['cc_exp'];
         $url['cust_ip'] = $order['ip'];
         $url['amount'] = "1.00";
 
-        $testmode = false;
+        $livemode = true;
         if($url['card_number']=="4222222222222222"){
+            
             $url['amount'] = "1.11";
             $url['card_number'] = "4444333322221111";
             $url['card_expire'] = "1024";
-            $testmode = true;
+            $livemode = false;
         }
-
         //var_dump($order);exit;
         $url['bill_street'] = $order['address1'];
         $url['bill_zip'] = $order['zip'];
@@ -49,7 +50,7 @@ class MerchantAccount2
                 '827208',
                 'rptweb',
                 'KWBZW5NJ3RXUYPZS64FHPJN75NP5TVD42OOQBSAHWLSIWRDT96CQXKCPJ04P11O5',
-                $testmode
+                $livemode
             );
             // Submit a purchase
             $response = $PaymentProcessor->ccauthonly(
@@ -66,8 +67,10 @@ class MerchantAccount2
             
             //print_r($url);
             // Display Converge API response
-            print('ConvergeApi->ccauthonly Response:' . "\n\n");
-            print_r($response);
+           
+
+            Log::debug("Merchant ".print_r($response, true));
+            Log::debug("Merchant DEBUG ".print_r($PaymentProcessor->debug, true));
 
             /*if($res->getStatusCode() == 200 && strpos($this->reason, "Approved")){
                 return true;

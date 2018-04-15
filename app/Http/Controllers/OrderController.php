@@ -99,7 +99,6 @@ class OrderController extends Controller
             "cc_auth"=> null,
 
         );
-
         $chargeresult = false;
         try{
             //charge the card
