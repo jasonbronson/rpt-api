@@ -85,8 +85,8 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Resorts</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Condos</a></li>
+                <li><a href="/admin/resorts"><i class="fa fa-circle-o"></i> Resorts</a></li>
+                <li><a href="/admin/condos"><i class="fa fa-circle-o"></i> Condos</a></li>
               </ul>
             </li>
     

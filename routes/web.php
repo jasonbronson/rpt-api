@@ -32,3 +32,7 @@ Route::any('/admin/seasonRatesChange', 'AdminController@seasonRatesChange');
 Route::any('/admin/statusChange', 'AdminController@statusChange');
 Route::any('/admin/charge', 'AdminController@charge');
 Route::any('/admin/logout', 'AdminController@logout');
+Route::any('/admin/resorts', 'AdminController@resorts');
+Route::any('/admin/resort/{resortid}', 'AdminController@resort');
+Route::any('/admin/condos', 'AdminController@condos');
+Route::any('/admin/condo/{condoid}', 'AdminController@condo');

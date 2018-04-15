@@ -80,7 +80,7 @@ class AdminController extends BaseController
         $data = array();
         return view('adminassets.index')->with($data);
     }
-
+    
     public function logout(Request $request){
 
         $request->session()->flush();
@@ -91,6 +91,39 @@ class AdminController extends BaseController
 
         
         return json_encode("success");
+    }
+
+    public function resorts(Request $request){
+
+        //check delete
+        $del = $request->input('delete');
+        if($del){
+            DB::table('resorts')->where('resort_id', '=', $del)->delete();
+        }
+        //check add
+        $new = $request->input('newresort');
+        if($new){
+            DB::table('resorts')->insert(
+                ['resort_name' => $_REQUEST['resort_name'], 'active' => 1]
+            );
+        }
+
+        $sql = "select * from resorts";
+        $rows = $this->db->select($sql);
+        return view('adminassets.resorts')->with(array("rows" => $rows));
+    }
+    public function resort($resortid){
+
+        if($_POST){
+            DB::table('resorts')
+            ->where('resort_id', $_REQUEST['resort_id'])
+            ->update(['resort_name' => $_REQUEST['resort_name'] ]);
+        }
+
+        $sql = "select * from resorts where resort_id=?";
+        $row = $this->db->select($sql, [$resortid]);
+        //dd($row[0]);
+        return view('adminassets.resort')->with( array("row" => $row[0]) );
     }
 
     public function reservation($id){
