@@ -75,11 +75,7 @@ class AdminController extends BaseController
         
         return view('adminassets.reservations')->with( array("rows" => $data) );
     }
-    public function condos(Request $request){
-
-        $data = array();
-        return view('adminassets.index')->with($data);
-    }
+   
     
     public function logout(Request $request){
 
@@ -108,9 +104,8 @@ class AdminController extends BaseController
             );
         }
 
-        $sql = "select * from resorts";
-        $rows = $this->db->select($sql);
-        return view('adminassets.resorts')->with(array("rows" => $rows));
+        $resorts = $this->getResorts();
+        return view('adminassets.resorts')->with(array("rows" => $resorts));
     }
     public function resort($resortid){
 
@@ -124,6 +119,53 @@ class AdminController extends BaseController
         $row = $this->db->select($sql, [$resortid]);
         //dd($row[0]);
         return view('adminassets.resort')->with( array("row" => $row[0]) );
+    }
+    public function condos(Request $request){
+
+        //check delete
+        $del = $request->input('delete');
+        if($del){
+            DB::table('condos')->where('condo_id', '=', $del)->delete();
+        }
+        //check add
+        $new = $request->input('newcondo');
+        if($new){
+            $condo = array('condo_name', 'resort_id', 'condo_bedrooms', 'condo_fee_booking', 'condo_fee_impact', 'condo_tax_rate', 'condo_min_occupancy', 
+            'condo_max_occupancy', 'condo_min_nights');
+            foreach($condo as $item){
+                $condoDetail[$item] = $_REQUEST[$item]; 
+            }
+            DB::table('condos')->insert(
+                $condoDetail
+            );
+        }
+
+        $sql = "select * from condos";
+        $rows = $this->db->select($sql);
+
+        $resorts = $this->getResorts();
+        return view('adminassets.condos')->with(array("rows" => $rows, "resorts" => $resorts));
+    }
+    public function condo($condoid){
+
+        if($_POST){
+
+            $condo = array('condo_name', 'resort_id', 'condo_bedrooms', 'condo_fee_booking', 'condo_fee_impact', 'condo_tax_rate', 'condo_min_occupancy', 
+            'condo_max_occupancy', 'condo_min_nights');
+            foreach($condo as $item){
+                $condoUpdate[$item] = $_REQUEST[$item]; 
+            }
+
+            DB::table('condos')
+            ->where('condo_id', $_REQUEST['condo_id'])
+            ->update($condoUpdate);
+        }
+
+        $sql = "select * from condos where condo_id=?";
+        $row = $this->db->select($sql, [$condoid]);
+        //dd($row[0]);
+        $resorts = $this->getResorts();
+        return view('adminassets.condo')->with( array("row" => $row[0], "resorts" => $resorts) );
     }
 
     public function reservation($id){
@@ -322,6 +364,12 @@ class AdminController extends BaseController
         );
 
         return json_encode("success");
+    }
+
+    private function getResorts(){
+        $sql = "select * from resorts";
+        $rows = $this->db->select($sql);
+        return $rows;
     }
 
 }

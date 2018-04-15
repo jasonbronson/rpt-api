@@ -76,19 +76,28 @@
               </a>
             </li>
             
-            <li class="treeview">
-              <a href="/admin/condoresorts/">
+            <li class="sidebar">
+              <a href="/admin/resorts/">
                 <i class="fa fa-files-o"></i>
-                <span>Condo & Resorts</span>
+                <span>Resorts</span>
                 <span class="pull-right-container">
                   <span class="label label-primary pull-right"></span>
                 </span>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="/admin/resorts"><i class="fa fa-circle-o"></i> Resorts</a></li>
-                <li><a href="/admin/condos"><i class="fa fa-circle-o"></i> Condos</a></li>
-              </ul>
             </li>
+            <li class="sidebar">
+                <a href="/admin/condos/">
+                  <i class="fa fa-files-o"></i>
+                  <span>Condos</span>
+                  <span class="pull-right-container">
+                    <span class="label label-primary pull-right"></span>
+                  </span>
+                </a>
+                <!-- ul class="treeview-menu">
+                  <li><a href="/admin/resorts"><i class="fa fa-circle-o"></i> Resorts</a></li>
+                  <li><a href="/admin/condos"><i class="fa fa-circle-o"></i> Condos</a></li>
+                </ul> -->
+              </li>
     
             <li>
               <a href="/admin/reservations/">

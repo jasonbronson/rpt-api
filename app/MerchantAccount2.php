@@ -47,8 +47,8 @@ class MerchantAccount2
     
             $PaymentProcessor = new \markroland\Converge\ConvergeApi(
                 '827208',
-                'rptravel',
-                '?`EH67MgfZLbvPPe',
+                'rptweb',
+                'KWBZW5NJ3RXUYPZS64FHPJN75NP5TVD42OOQBSAHWLSIWRDT96CQXKCPJ04P11O5',
                 $testmode
             );
             // Submit a purchase
@@ -64,6 +64,7 @@ class MerchantAccount2
                 )
             );
             
+            //print_r($url);
             // Display Converge API response
             print('ConvergeApi->ccauthonly Response:' . "\n\n");
             print_r($response);
