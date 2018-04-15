@@ -11,7 +11,7 @@ use markroland\Converge;
 class MerchantAccount2
 {
 
-    
+    private $reason;
 
     public function ChargeCreditCard($order){
 
