@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Libraries\ReservationRates;
-use App\MerchantAccount2;
+use App\MerchantAccount;
 use App\Notifications\NotifyErrors;
 use App\Popo\Errors;
 use App\Users;
@@ -23,7 +23,7 @@ class OrderController extends Controller
         $this->reservationEmails = new ReservationEmails();
     }
 
-    public function index(Request $request, ReservationRates $rates, Errors $errors, MerchantAccount2 $merchantAccount){
+    public function index(Request $request, ReservationRates $rates, Errors $errors, MerchantAccount $merchantAccount){
 
         //save instructions message
         $instructions = $request->input('instructions');
