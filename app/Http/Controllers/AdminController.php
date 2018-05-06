@@ -140,32 +140,142 @@ class AdminController extends BaseController
             );
         }
 
-        $sql = "select * from condos";
+        $sql = "select * from condos c join resorts r on c.resort_id = r.resort_id order by resort_name";
         $rows = $this->db->select($sql);
 
         $resorts = $this->getResorts();
         return view('adminassets.condos')->with(array("rows" => $rows, "resorts" => $resorts));
     }
-    public function condo($condoid){
 
-        if($_POST){
+    /**
+     * Gets the condo driven by a condo id passed
+     *
+     * @param [type] $condoid
+     * @return void
+     */
+    public function condo(Request $request, $condoid){
+
+        if($_POST && $request->input('edit_condo') ){
 
             $condo = array('condo_name', 'resort_id', 'condo_bedrooms', 'condo_fee_booking', 'condo_fee_impact', 'condo_tax_rate', 'condo_min_occupancy', 
             'condo_max_occupancy', 'condo_min_nights');
             foreach($condo as $item){
-                $condoUpdate[$item] = $_REQUEST[$item]; 
+                $condoUpdate[$item] = $request->input($item); 
             }
 
             DB::table('condos')
             ->where('condo_id', $_REQUEST['condo_id'])
             ->update($condoUpdate);
         }
+        if($_POST && $request->input('agegroups') ){
+
+            $condo_id = $request->input('condo_id');
+            $agegroup_id = $request->input('agegroup_id');
+            $restriction_extra_fee = $request->input('restriction_extra_fee');
+            $restriction_num_free = $request->input('restriction_num_free');
+            
+            $itemUpdate = array(
+                'condo_id' => $condo_id[0],
+                'agegroup_id' => $agegroup_id[0],
+                'restriction_extra_fee' => $restriction_extra_fee[0],
+                'restriction_num_free' => $restriction_num_free[0]
+            );
+            DB::table('agegroup_restrictions')
+            ->where('condo_id', $condo_id[0] )
+            ->where('agegroup_id', $agegroup_id[0])
+            ->update($itemUpdate);
+
+            $itemUpdate = array(
+                'condo_id' => $condo_id[1],
+                'agegroup_id' => $agegroup_id[1],
+                'restriction_extra_fee' => $restriction_extra_fee[1],
+                'restriction_num_free' => $restriction_num_free[1]
+            );
+            DB::table('agegroup_restrictions')
+            ->where('condo_id', $condo_id[1] )
+            ->where('agegroup_id', $agegroup_id[1])
+            ->update($itemUpdate);
+
+
+            
+        }
 
         $sql = "select * from condos where condo_id=?";
         $row = $this->db->select($sql, [$condoid]);
+
+        $sql = "select * from rates where condo_id=?";
+        $rates = $this->db->select($sql, [$condoid]);
+        
         //dd($row[0]);
         $resorts = $this->getResorts();
-        return view('adminassets.condo')->with( array("row" => $row[0], "resorts" => $resorts) );
+        
+        //get age data
+        $sql = "select * from agegroup_restrictions agr 
+        join agegroups ag on ag.`agegroup_id` = agr.`agegroup_id` where condo_id=?";
+        $age = $this->db->select($sql, [$condoid]);
+        
+        return view('adminassets.condo')->with( array("row" => $row[0], "resorts" => $resorts, "age" => $age, "rates" => $rates) );
+    }
+
+    public function getRates(Request $request){
+        $ratename = $request->input('rate_name');
+        $condoid = $request->input('condo_id');
+        $sql = "select * from rates where rate_name=? and condo_id=?";
+        $rates = $this->db->select($sql, [$ratename, $condoid]);
+        return $rates;
+    }
+    public function saveRates(Request $request){
+
+        $data = array('rate_id', 'condo_id', 'rate_name', 'rate_price_sunday', 'rate_price_monday', 'rate_price_tuesday', 'rate_price_wednesday', 'rate_price_thursday', 'rate_price_friday', 'rate_price_saturday', 'rate_min_nights', 'rate_price_override');
+        foreach($data as $item){
+            $update[$item] = $request->input($item);
+            $$item = $request->input($item);
+        }
+
+        if(empty($rate_id)){
+            $rate_id = DB::table('rates')->insertGetId(
+                $update
+            );
+            $type = "insert";
+            if(!empty($rate_id)){
+                $response = "success";
+            }else{
+                $response = "fail";
+            }
+        }else{
+            $response = DB::table('rates')->where('rate_id', $rate_id)->update(
+                $update
+            );
+            $response = "success";
+            $type = "update";
+            
+        }    
+            
+        return array("response" => $response, "type" => $type );
+    }
+    public function deleteRates(Request $request){
+
+        $rate_id = $request->input('rate_id');
+        if(!empty($rate_id))
+        DB::table('rates')->where('rate_id', '=', $rate_id)->delete();
+
+        return "Success";
+    }
+
+    public function getRatePricing(){
+
+        $condo_id = $_REQUEST['condo_id'];
+        $sql = "select ratedate_date, rate_name, rate_price_sunday,	rate_price_monday,	rate_price_tuesday,	rate_price_wednesday,	rate_price_thursday,	rate_price_friday,	rate_price_saturday,	rate_min_nights,	rate_price_override from rates r
+        join rate_dates d on r.`rate_id` = d.`rate_id`
+        where condo_id = ? and ratedate_date > now()";
+        $rows = $this->db->select($sql, [$condo_id]);
+        foreach($rows as $row){
+            $row->day = strtolower(date("l", strtotime($row->ratedate_date)));
+            $priceDay = "rate_price_".$row->day;
+            $row->price = $row->$priceDay;
+            $data[] = $row;
+        }
+        return $data;
     }
 
     public function reservation($id){
@@ -367,7 +477,7 @@ class AdminController extends BaseController
     }
 
     private function getResorts(){
-        $sql = "select * from resorts";
+        $sql = "select * from resorts order by resort_name";
         $rows = $this->db->select($sql);
         return $rows;
     }

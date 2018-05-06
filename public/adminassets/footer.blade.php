@@ -54,5 +54,14 @@
     <script src="/adminassets/dist/js/demo.js"></script>
     <script src="/adminassets/dist/js/bootstrap-notify.min.js"></script>
     <script src="/adminassets/dist/js/custom.js?v=<?php echo rand(1,99999); ?>"></script>
+
+    <script src="/adminassets/dist/js/jquery.populate.js"></script>
+
+
+    
+    
+    <link rel="stylesheet" href="/adminassets/dist/css/bootstrap-datepicker.css">
+    <script src="/adminassets/dist/js/bootstrap-datepicker.js"></script>
+    
     </body>
     </html>

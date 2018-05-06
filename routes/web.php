@@ -36,3 +36,8 @@ Route::any('/admin/resorts', 'AdminController@resorts');
 Route::any('/admin/resort/{resortid}', 'AdminController@resort');
 Route::any('/admin/condos', 'AdminController@condos');
 Route::any('/admin/condo/{condoid}', 'AdminController@condo');
+Route::any('/admin/getrates', 'AdminController@getRates');
+Route::any('/admin/saverates', 'AdminController@saveRates');
+Route::any('/admin/deleterates', 'AdminController@deleteRates');
+Route::any('/admin/getratepricing', 'AdminController@getRatePricing');
+

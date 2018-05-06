@@ -126,6 +126,7 @@ class HomeController extends BaseController
             }
 
         $data['step'] = $step;
+        return 'NO LONGER IN SERVICE';
         return view('home')->with($data);
     }
 

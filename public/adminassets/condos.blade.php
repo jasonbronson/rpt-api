@@ -32,8 +32,10 @@
               <table id="dataTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>Condo Name</th>
+                  <th>Resort</th>  
+                  <th>Condo Name</th>
                     <th>Bedrooms</th>
+                    <th>Occupancy</th>
                     <th>Delete</th>
                     
                 </tr>
@@ -42,8 +44,10 @@
                 
                   @foreach($rows as $data)
                   <tr>
+                    <td>{{$data->resort_name}}</td>
                     <td><a href="/admin/condo/{{$data->condo_id}}">{{$data->condo_name}}</a></td>
                     <td>{{$data->condo_bedrooms}}</td>
+                    <td>Min:{{$data->condo_min_occupancy}} - Max: {{$data->condo_max_occupancy}}</td>
                     <td><button class="condodelete" onclick="btn_del_click({{$data->condo_id}})">Delete</button></td>
                     
                   </tr>
@@ -82,13 +86,13 @@
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
                     
-                                <h2>Add new condo</h2>
+                                <h2>Add New Condo</h2>
                                 <form id="editcondo" action="" method="POST">
                                   <input type="hidden" name="newcondo" value="true">
                                   <table class="table table-striped table-responsive">
                                       <tbody>
                                           <tr>
-                                              <td nowrap="nowrap"><b>Name:</b></td>
+                                              <td><b>Condo Name:</b></td>
                                               <td><input type="text" name="condo_name" value=""></td>
                                             </tr>
                                             <tr>

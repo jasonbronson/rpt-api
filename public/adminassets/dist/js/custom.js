@@ -254,12 +254,107 @@ $(function () {
 
   });
 
+  $('#existingrates').change(function(){
+
+      var value = $('#existingrates').val();
+      if(value == "new"){
+        $('#condorates')[0].reset();
+        $('#rate_id').val('');
+        return;
+      }
+      var condo_id =  $('#condo_id').val();
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/admin/getrates/?rate_name=" + value + "&condo_id=" + condo_id,
+        data: "",
+        success: function (response) {
+          //console.log(response);
+          $('#condorates').populate(response[0]);
+          //load rates
+          loadRateTable(condo_id);
+        }
+      });
+
+      
+    });
+
+    $('#saverates').click(function(){
+
+      var data =  $('#condorates').serialize();
+      console.log(data);
+      $.ajax({
+        type: "POST",
+        dataType: "json",
+        data: data,
+        url: "/admin/saverates/",
+        success: function (r) {
+          console.log(r);
+          if(r.response == "success"){
+            showNotification('Success saved rates', "info");
+          }else{
+            showNotification('Failed to save', "error");
+          }
+          //trigger message of saved
+        }
+      });
+
+      
+    });
+
+    
+    $('#deleterates').click(function(){
+
+      var rate_id = $('#rate_id').val();
+      
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/admin/deleterates/?rate_id=" + rate_id,
+        data: "",
+        success: function (response) {
+          console.log(response);
+          
+        }
+      });
+
+      $('#condorates')[0].reset();
+      $('#rate_id').val('');
+      showNotification('Success removed rate', "info");
+
+      
+    });
+
+  function loadRateTable(condo_id){
+
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: "/admin/getratepricing/?condo_id=" + condo_id,
+      data: "",
+      success: function (response) {
+        console.log(response);
+
+        //loop here
+        var temp = '<tr><td>Date</td> <td>Day</td> <td>Rate</td> <td>Price</td> </tr>';
+        for(var a =0; a<response.length; a++ ){
+          temp += '<tr><td>' + response[a].ratedate_date + '</td> <td>' + response[a].day + '</td> <td>' + response[a].rate_name + '</td> <td>' + response[a].price + '</td> </tr>';
+        }
+        
+        $('#ratepricestable').html(temp);
+      }
+    });
+     
+     
+
+  }
+
   function showNotification(message, type = "info"){
 
     $.notify({
       // options
-      icon: 'glyphicon glyphicon-warning-sign',
-      title: 'Notification',
+      icon: 'glyphicon glyphicon-info-sign',
+      title: '',
       message: message
     },{
       // settings
@@ -301,5 +396,9 @@ $(function () {
     });
 
   }
+
+  $('.setratesform .input-daterange').datepicker({
+    todayHighlight: true
+  });
 
 })
