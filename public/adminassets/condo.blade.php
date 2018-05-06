@@ -122,10 +122,11 @@
                               </div>
 
                               <div class="tab-pane" id="tab_2">
-                                
+                                   
                                     <div class="col-md-6">
+                                        <p>Existing Rates <select id="existingrates" name="name"></p>
                                          <div class="btn-align"><h3>Condo Rates</h3></div>
-                                         <p>Existing Rates <select id="existingrates" name="name">
+                                         <p>
                                             <option value="new">Add New Rate</option>
                                             @foreach($rates as $rate)
                                               <option value="{{$rate->rate_name}}">{{$rate->rate_name}}</option>
@@ -207,25 +208,21 @@
                                       
                                       <div class="panel panel-default setratesform">
                                             <div class="panel-heading">Set The Rate Dates</div>
-                                            <div class="panel-body">
-                                                <p></p>
-                                                <select id="existingrates" name="name">
-                                                    @foreach($rates as $rate)
-                                                      <option value="{{$rate->rate_name}}">{{$rate->rate_name}}</option>
-                                                    @endforeach
-                                                    </select>
-                                                    <br><br><br>
-                                                    <div class="input-daterange input-group" id="datepicker">
-                                                        <input type="text" class="input-sm form-control" name="start" />
-                                                        <span class="input-group-addon">to</span>
-                                                        <input type="text" class="input-sm form-control" name="end" />
-                                                    </div>
-                                                    <br>
-                                                    <input type="button" id="setrates" name="submit" value="Set"> &nbsp;
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <input type="button" id="unsetrates" name="submit" value="UnSet"> 
+                                            <form id="setratesform">
+                                              <div class="panel-body">
+                                                      <p>Here you can set or unset the rates for each rate name dates</p><br><br>
+                                                      <div class="input-daterange input-group" id="datepicker">
+                                                          <input type="text" class="input-sm form-control" name="start" />
+                                                          <span class="input-group-addon">to</span>
+                                                          <input type="text" class="input-sm form-control" name="end" />
+                                                      </div>
+                                                      <br>
+                                                      <input type="button" id="setrates" name="submit" value="Set"> &nbsp;
+                                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                      <input type="button" id="unsetrates" name="submit" value="UnSet"> 
 
-                                            </div>
+                                              </div>
+                                            </form>
                                       </div>
 
                                       <div class="panel panel-default">

@@ -107,6 +107,30 @@
                 </span>
               </a>
             </li>
+            <!--li>
+              <a href="/admin/emails/">
+                <i class="fa fa-th"></i> <span>Emails</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-green"></small>
+                </span>
+              </a>
+            </li-->
+            <!--li>
+              <a href="/admin/leads/">
+                <i class="fa fa-th"></i> <span>Leads</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-green"></small>
+                </span>
+              </a>
+            </li-->
+            <li>
+              <a href="/admin/users/">
+                <i class="fa fa-th"></i> <span>Users</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-green"></small>
+                </span>
+              </a>
+            </li>
     
             
             

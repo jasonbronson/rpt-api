@@ -46,6 +46,44 @@ class AdminController extends BaseController
         return view('adminassets.index')->with($data);
     }
 
+    // public function emails(Request $request){
+
+    //     $sql = "select * from orders where order_status = 'n' and order_date_submit > '2018-01-01'";
+    //     $rows = $this->db->select($sql);
+    //     return view('adminassets.resorts')->with(array("rows" => $resorts));
+    // }
+    // public function leads(Request $request){
+
+    //     $sql = "select * from leads where order_status = 'n' and order_date_submit > '2018-01-01'";
+    //     $rows = $this->db->select($sql);
+    //     return view('adminassets.resorts')->with(array("rows" => $resorts));
+    //     return "Success";
+    // }
+    public function users(Request $request){
+
+        if($_POST && $request->input('delete') == "delete"){
+            $id = $request->input('id');
+            DB::table('users')->where('id', '=', $id)->delete();
+        }
+
+        $usersname = $request->input('usersname');
+        $password = $request->input('password');
+        if($_POST && !empty($usersname)){
+            
+            DB::table('users')->insert(
+                [
+                'usersname' => $usersname, 
+                'password' => $password
+                ]
+            );
+        }
+
+
+        $sql = "select * from users";
+        $rows = $this->db->select($sql);
+        return view('adminassets.users')->with(array("rows" => $rows));
+    }
+
     public function reservations(Request $request){
 
         $sql = "select o.*, c.`condo_name`,  r.`resort_name` from orders o 
@@ -262,13 +300,33 @@ class AdminController extends BaseController
         return "Success";
     }
 
+    public function setRatesPricing(Request $request){
+
+        //$rate_id = $request->input('rate_id');
+        //if(!empty($rate_id))
+        //DB::table('rates')->where('rate_id', '=', $rate_id)->delete();
+
+        return "Success";
+    }
+    public function unsetRatesPricing(Request $request){
+
+        //$rate_id = $request->input('rate_id');
+        //if(!empty($rate_id))
+        //DB::table('rates')->where('rate_id', '=', $rate_id)->delete();
+
+        return "Success";
+    }
+
+    
+
     public function getRatePricing(){
 
         $condo_id = $_REQUEST['condo_id'];
+        $rate_name = $_REQUEST['name'];
         $sql = "select ratedate_date, rate_name, rate_price_sunday,	rate_price_monday,	rate_price_tuesday,	rate_price_wednesday,	rate_price_thursday,	rate_price_friday,	rate_price_saturday,	rate_min_nights,	rate_price_override from rates r
         join rate_dates d on r.`rate_id` = d.`rate_id`
-        where condo_id = ? and ratedate_date > now()";
-        $rows = $this->db->select($sql, [$condo_id]);
+        where condo_id = ? and rate_name=? and ratedate_date > now()";
+        $rows = $this->db->select($sql, [$condo_id, $rate_name]);
         foreach($rows as $row){
             $row->day = strtolower(date("l", strtotime($row->ratedate_date)));
             $priceDay = "rate_price_".$row->day;

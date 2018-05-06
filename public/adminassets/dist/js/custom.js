@@ -256,8 +256,8 @@ $(function () {
 
   $('#existingrates').change(function(){
 
-      var value = $('#existingrates').val();
-      if(value == "new"){
+      var rateName = $('#existingrates').val();
+      if(rateName == "new"){
         $('#condorates')[0].reset();
         $('#rate_id').val('');
         return;
@@ -266,13 +266,13 @@ $(function () {
       $.ajax({
         type: "GET",
         dataType: "json",
-        url: "/admin/getrates/?rate_name=" + value + "&condo_id=" + condo_id,
+        url: "/admin/getrates/?rate_name=" + rateName + "&condo_id=" + condo_id,
         data: "",
         success: function (response) {
           //console.log(response);
           $('#condorates').populate(response[0]);
           //load rates
-          loadRateTable(condo_id);
+          loadRateTable(condo_id, rateName);
         }
       });
 
@@ -325,24 +325,78 @@ $(function () {
       
     });
 
-  function loadRateTable(condo_id){
+    $('#setrates').click(function(){
+
+      var ratesform = $('#setratesform').serialize();
+      var condo_id =  $('#condo_id').val();
+      var rateName = $('#existingrates').val();
+      if(rateName == "new"){
+        return;
+      }
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/admin/setratespricing/?" + ratesform + "&condo_id=" + condo_id + "&rate_name="+rateName,
+        data: "",
+        success: function (response) {
+          console.log(response);
+          showNotification('Success setting rates', "info");
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+          showNotification('Error setting rates '+ textStatus + errorThrown, "error");
+        }
+
+      });
+      //loadRateTable(condo_id, rateName);
+      
+    });
+
+    $('#unsetrates').click(function(){
+
+      var ratesform = $('#setratesform').serialize();
+      var condo_id =  $('#condo_id').val();
+      var rateName = $('#existingrates').val();
+      if(rateName == "new"){
+        return;
+      }
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/admin/unsetratespricing/?" + ratesform + "&condo_id=" + condo_id + "&rate_name="+rateName,
+        data: "",
+        success: function (response) {
+          console.log(response);
+          showNotification('Success unsetting rates', "info");
+        },
+        error: function(){
+          showNotification('Error unsetting rates', "error");
+        }
+
+      });
+      loadRateTable(condo_id, rateName);
+      
+    });
+
+  function loadRateTable(condo_id, name){
 
     $.ajax({
       type: "GET",
       dataType: "json",
-      url: "/admin/getratepricing/?condo_id=" + condo_id,
+      url: "/admin/getratepricing/?condo_id=" + condo_id + "&name=" + name,
       data: "",
       success: function (response) {
         console.log(response);
-
         //loop here
         var temp = '<tr><td>Date</td> <td>Day</td> <td>Rate</td> <td>Price</td> </tr>';
         for(var a =0; a<response.length; a++ ){
           temp += '<tr><td>' + response[a].ratedate_date + '</td> <td>' + response[a].day + '</td> <td>' + response[a].rate_name + '</td> <td>' + response[a].price + '</td> </tr>';
         }
-        
         $('#ratepricestable').html(temp);
+      },
+      error: function (){
+        $('#ratepricestable').html('');
       }
+
     });
      
      
