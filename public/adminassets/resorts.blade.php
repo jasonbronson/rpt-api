@@ -30,7 +30,7 @@
             <!-- /.box-header -->
             <div class="box-body">
                 
-              <table id="dataTable" class="table table-bordered table-striped">
+              <table id="dataTableResorts" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                     <th>Resort Name</th>
@@ -103,7 +103,7 @@
       $( document ).ready(function() {
         console.log( "ready!" );
         
-        $('#dataTable').DataTable({
+        $('#dataTableResorts').DataTable({
 
           'paging'      : true,
           'lengthChange': true,

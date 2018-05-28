@@ -145,18 +145,26 @@ class AdminController extends BaseController
         $resorts = $this->getResorts();
         return view('adminassets.resorts')->with(array("rows" => $resorts));
     }
-    public function resort($resortid){
+    public function resort(Request $request, $resortid){
 
-        if($_POST){
+        if($_POST && !empty($request->input('resort_name'))){
             DB::table('resorts')
             ->where('resort_id', $_REQUEST['resort_id'])
             ->update(['resort_name' => $_REQUEST['resort_name'] ]);
         }
+        if($_POST && !empty($request->input('condo_name'))){
+            $this->addCondo();
+        }
 
         $sql = "select * from resorts where resort_id=?";
         $row = $this->db->select($sql, [$resortid]);
-        //dd($row[0]);
-        return view('adminassets.resort')->with( array("row" => $row[0]) );
+
+        $sql = "select * from condos c join resorts r on c.resort_id = r.resort_id where r.resort_id = ? order by resort_name";
+        $condos = $this->db->select($sql, [$resortid]);
+
+        $resorts = $this->getResorts();
+        //dd($condos);
+        return view('adminassets.resort')->with( array("row" => $row[0], "condos" => $condos, "resorts" => $resorts) );
     }
     public function condos(Request $request){
 
@@ -168,14 +176,7 @@ class AdminController extends BaseController
         //check add
         $new = $request->input('newcondo');
         if($new){
-            $condo = array('condo_name', 'resort_id', 'condo_bedrooms', 'condo_fee_booking', 'condo_fee_impact', 'condo_tax_rate', 'condo_min_occupancy', 
-            'condo_max_occupancy', 'condo_min_nights');
-            foreach($condo as $item){
-                $condoDetail[$item] = $_REQUEST[$item]; 
-            }
-            DB::table('condos')->insert(
-                $condoDetail
-            );
+            $this->addCondo();
         }
 
         $sql = "select * from condos c join resorts r on c.resort_id = r.resort_id order by resort_name";
@@ -183,6 +184,17 @@ class AdminController extends BaseController
 
         $resorts = $this->getResorts();
         return view('adminassets.condos')->with(array("rows" => $rows, "resorts" => $resorts));
+    }
+
+    private function addCondo(){
+        $condo = array('condo_name', 'resort_id', 'condo_bedrooms', 'condo_fee_booking', 'condo_fee_impact', 'condo_tax_rate', 'condo_min_occupancy', 
+            'condo_max_occupancy', 'condo_min_nights');
+            foreach($condo as $item){
+                $condoDetail[$item] = $_REQUEST[$item]; 
+            }
+            DB::table('condos')->insert(
+                $condoDetail
+            );
     }
 
     /**

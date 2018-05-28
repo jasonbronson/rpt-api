@@ -455,4 +455,36 @@ $(function () {
     todayHighlight: true
   });
 
-})
+
+    
+    
+
+    $('#cancel').click(function( e ){
+      e.preventDefault();
+      $('#condomodal').modal('hide');
+    });
+    
+    $('.condoadd').click(function(e) {
+      e.preventDefault();
+      console.log("condo add ");
+      $('#condomodal').modal('show');
+    });
+
+      $('#dataTableCondos').DataTable({
+
+        'paging'      : true,
+        'lengthChange': true,
+        'searching'   : true,
+        'ordering'    : false,
+        'info'        : false,
+        'autoWidth'   : false
+      });
+  
+
+});
+
+function btn_del_click(id) {
+  if (window.confirm("Are you sure you want to delete?")) {
+    location.href = '/admin/condos?delete=' + id;
+  }
+}

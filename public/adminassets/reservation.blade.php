@@ -140,7 +140,6 @@
                                                 <tr>
                                             <td nowrap="nowrap"><b>Condo:</b></td>
                                             <td>
-                                                
                                                 <select name="condo" id="reservationchangeselect"> 
                                                     @foreach($condos as $field => $name)
                                                         @if($field == $data->condo)
@@ -167,7 +166,7 @@
                                                 <tr>
                                             <td nowrap="nowrap"><b>Children:</b></td>
                                             <td><select name="kids" id="reservationkidsselect">
-                                                @for($a =1; $a < 10; $a++) 
+                                                @for($a =0; $a < 10; $a++) 
                                                     @if($a == $data->kids)
                                                         <option value="{{$a}}" selected>{{$a}}</option> 
                                                     @else
@@ -429,6 +428,10 @@
           $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
           //Money Euro
           $('[data-mask]').inputmask()*/
+
+          $('#reservationresortselect').change(function(){
+            
+          });
       
           //Date range picker
           $('#reservation').daterangepicker()
