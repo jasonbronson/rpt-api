@@ -4,8 +4,7 @@
  * You should not use this file in production.
  * This file is for demo purposes only.
  */
-$(function () {
-  'use strict'
+$(document).ready(function(){
 
   $('#reservationchangeform').submit(function( e ){
     e.preventDefault();
@@ -403,61 +402,9 @@ $(function () {
 
   }
 
-  function showNotification(message, type = "info"){
-
-    $.notify({
-      // options
-      icon: 'glyphicon glyphicon-info-sign',
-      title: '',
-      message: message
-    },{
-      // settings
-      element: 'body',
-      position: null,
-      type: type,
-      allow_dismiss: true,
-      newest_on_top: true,
-      showProgressbar: false,
-      placement: {
-        from: "top",
-        align: "right"
-      },
-      offset: 20,
-      spacing: 10,
-      z_index: 1031,
-      delay: 5000,
-      timer: 1000,
-      url_target: '_blank',
-      mouse_over: null,
-      animate: {
-        enter: 'animated fadeInDown',
-        exit: 'animated fadeOutUp'
-      },
-      onShow: null,
-      onShown: null,
-      onClose: null,
-      onClosed: null,
-      icon_type: 'class',
-      template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
-        '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
-        '<span data-notify="icon"></span> ' +
-        '<span data-notify="title">{1}</span> ' +
-        '<span data-notify="message">{2}</span>' +
-        '<div class="progress" data-notify="progressbar">' +
-          '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
-        '</div>' +
-      '</div>' 
-    });
-
-  }
-
   $('.setratesform .input-daterange').datepicker({
     todayHighlight: true
   });
-
-
-    
-    
 
     $('#cancel').click(function( e ){
       e.preventDefault();
@@ -481,10 +428,76 @@ $(function () {
       });
   
 
+
 });
 
+
+function showNotification(message, type = "info"){
+
+  $.notify({
+    // options
+    icon: 'glyphicon glyphicon-info-sign',
+    title: '',
+    message: message
+  },{
+    // settings
+    element: 'body',
+    position: null,
+    type: type,
+    allow_dismiss: true,
+    newest_on_top: true,
+    showProgressbar: false,
+    placement: {
+      from: "top",
+      align: "right"
+    },
+    offset: 20,
+    spacing: 10,
+    z_index: 1031,
+    delay: 5000,
+    timer: 1000,
+    url_target: '_blank',
+    mouse_over: null,
+    animate: {
+      enter: 'animated fadeInDown',
+      exit: 'animated fadeOutUp'
+    },
+    onShow: null,
+    onShown: null,
+    onClose: null,
+    onClosed: null,
+    icon_type: 'class',
+    template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+      '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+      '<span data-notify="icon"></span> ' +
+      '<span data-notify="title">{1}</span> ' +
+      '<span data-notify="message">{2}</span>' +
+      '<div class="progress" data-notify="progressbar">' +
+        '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+      '</div>' +
+    '</div>' 
+  });
+
+}
+
 function btn_del_click(id) {
-  if (window.confirm("Are you sure you want to delete?")) {
-    location.href = '/admin/condos?delete=' + id;
+  if (window.confirm("Are you sure you want to delete this condo?")) {
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: "/admin/condos?delete=" + id,
+      data: "",
+      success: function (response) {
+        console.log(response);
+        //loop here
+        showNotification("Removed the condo", "info");
+      },
+      error: function (){
+        showNotification(response.Error, "error");
+      }
+
+    });
+
+      location.reload();
   }
 }
