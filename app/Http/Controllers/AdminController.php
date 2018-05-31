@@ -217,7 +217,7 @@ class AdminController extends BaseController
 
         if ($_POST && $request->input('edit_condo')) {
 
-            $condo = array('condo_name', 'resort_id', 'condo_bedrooms', 'condo_fee_booking', 'condo_fee_impact', 'condo_tax_rate', 'condo_min_occupancy',
+            $condo = array('condo_name', 'resort_id', 'condo_bedrooms', 'condo_fee_booking', 'condo_fee_impact', 'condo_tax_rate', 'condo_min_occupancy', 'condo_fee_cleaning',
                 'condo_max_occupancy', 'condo_min_nights');
             foreach ($condo as $item) {
                 $condoUpdate[$item] = $request->input($item);

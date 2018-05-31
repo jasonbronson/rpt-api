@@ -67,6 +67,10 @@
                                                     <td><input type="text" name="condo_fee_impact" value="{{$row->condo_fee_impact}}"></td>
                                                 </tr>
                                                 <tr>
+                                                    <td nowrap="nowrap"><b>Condo Cleaning Fee:</b></td>
+                                                    <td><input type="text" name="condo_fee_cleaning" value="{{$row->condo_fee_cleaning}}"></td>
+                                                </tr>
+                                                <tr>
                                                     <td nowrap="nowrap"><b>Condo Tax Rate:</b></td>
                                                     <td><input type="text" name="condo_tax_rate" value="{{$row->condo_tax_rate}}"></td>
                                                 </tr>
