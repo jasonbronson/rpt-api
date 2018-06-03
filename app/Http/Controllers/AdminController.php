@@ -168,7 +168,7 @@ class AdminController extends BaseController
         $condos = $this->db->select($sql, [$resortid]);
 
         $resorts = $this->getResorts();
-        //dd($condos);
+        //dd($resorts);
         return view('adminassets.resort')->with(array("row" => $row[0], "condos" => $condos, "resorts" => $resorts));
     }
     public function condos(Request $request)
@@ -405,7 +405,7 @@ class AdminController extends BaseController
             foreach ($resortRows as $value) {
                 $resorts[$value->resort_id] = $value->resort_name;
             }
-
+            
             $condoRows = $this->db->select("select * from condos", []);
             foreach ($condoRows as $value) {
                 $condos[$value->condo_id] = $value->condo_name;
@@ -415,6 +415,8 @@ class AdminController extends BaseController
             $orderhistory = $this->db->select("select * from order_log where orderid = ? order by id desc", [$row->order_id]);
             $countries = $this->db->select("select * from countries", []);
         }
+        //dd($cchistory);
+
         $templateVars = array("data" => $row, "cchistory" => $cchistory, "orderhistory" => $orderhistory, "id" => $id, "quote" => $quote, "condos" => $condos, "resorts" => $resorts, "countries" => $countries);
         return view('adminassets.reservation')->with($templateVars);
     }

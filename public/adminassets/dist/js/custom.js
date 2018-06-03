@@ -417,7 +417,7 @@ $(document).ready(function(){
       $('#condomodal').modal('show');
     });
 
-      $('#dataTableCondos').DataTable({
+    $('#dataTableCondos').DataTable({
 
         'paging'      : true,
         'lengthChange': true,

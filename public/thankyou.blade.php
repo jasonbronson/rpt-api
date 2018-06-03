@@ -78,7 +78,7 @@
       automatically sent to your <b>"Junk"</b> folder (most common with free
             e-mail accounts such as <b>YAHOO </b>&amp;<b> HOTMAIL)</b>, please be sure to check those
       locations. If you do not receive your confirmation within 24 hours<b>, </b>
-            send an e-mail to: </span>
+            send an e-mail to: reservations@rockypointtravel.com </span>
                         </font>
                         <span style="font-size: 9pt">
             <font color="#FF0000">

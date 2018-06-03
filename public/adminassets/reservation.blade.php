@@ -129,7 +129,7 @@
                                             <td><select name="resort" id="reservationresortselect"> 
                                                 
                                                 @foreach($resorts as $field => $name)
-                                                    @if($field == $data->resort_id)
+                                                    @if($field == $id)
                                                         <option value="{{$field}}" selected>{{$name}}</option> 
                                                     @else
                                                         <option value="{{$field}}">{{$name}}</option>   
@@ -142,7 +142,7 @@
                                             <td>
                                                 <select name="condo" id="reservationchangeselect"> 
                                                     @foreach($condos as $field => $name)
-                                                        @if($field == $data->condo)
+                                                        @if($field == $data->condo_id)
                                                             <option value="{{$field}}" selected>{{$name}}</option> 
                                                         @else
                                                             <option value="{{$field}}">{{$name}}</option>   
