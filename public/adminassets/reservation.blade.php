@@ -31,7 +31,7 @@
             <!-- Main content -->
             <section class="content">
               <!-- Small boxes (Stat box) -->
-              <div class="row">
+              <div class="row" id="reservationscreen">
 
                     <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
@@ -112,6 +112,9 @@
                                                 @endif
                                             @endforeach
                                         </select> 
+                                        
+                                        <img src='' width="20%" height="0px">
+                                        <input type="button" class="colorred" value="Delete reservation" id="deletereservation">
                                        </div>
                                         <form id="reservationchangeform">
                                         <input type="hidden" id="reservationid" name="reservationid" value="{{$id}}">

@@ -39,10 +39,10 @@ Route::any('/admin/condo/{condoid}', 'AdminController@condo');
 Route::any('/admin/getrates', 'AdminController@getRates');
 Route::any('/admin/saverates', 'AdminController@saveRates');
 Route::any('/admin/deleterates', 'AdminController@deleteRates');
+Route::any('/admin/deletereservation', 'AdminController@deleteReservation');
 Route::any('/admin/getratepricing', 'AdminController@getRatePricing');
 Route::any('/admin/setratespricing', 'AdminController@setRatesPricing');
 Route::any('/admin/unsetratespricing', 'AdminController@unsetRatesPricing');
-
 Route::any('/admin/emails', 'AdminController@emails');
 Route::any('/admin/leads', 'AdminController@leads');
 Route::any('/admin/users', 'AdminController@users');

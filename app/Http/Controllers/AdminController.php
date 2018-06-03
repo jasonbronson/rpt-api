@@ -361,6 +361,13 @@ class AdminController extends BaseController
         return $data;
     }
 
+    public function deleteReservation(Request $request){
+        $id = $request->input('id');
+        DB::table('orders')->where('order_id', '=', $id)->delete();
+
+        return array("response" => "success");
+    }
+
     public function reservation($id)
     {
 

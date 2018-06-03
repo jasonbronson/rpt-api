@@ -402,6 +402,30 @@ $(document).ready(function(){
 
   }
 
+  $('#deletereservation').click(function(){
+    var id = $('#reservationid').val();
+    if (window.confirm("Are you sure you want to delete this reservation?")) {
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/admin/deletereservation?id=" + id,
+        data: "",
+        success: function (response) {
+          console.log(response);
+          //loop here
+          showNotification("Removed the Reservation", "info");
+          //hide the reservation
+          $('#reservationscreen').hide();
+        },
+        error: function (){
+          showNotification(response.Error, "error");
+        }
+  
+      });
+        //
+    }
+  });
+
   $('.setratesform .input-daterange').datepicker({
     todayHighlight: true
   });
