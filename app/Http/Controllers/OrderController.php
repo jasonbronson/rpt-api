@@ -52,7 +52,7 @@ class OrderController extends Controller
                 $$value = isset($_REQUEST[$value])?$_REQUEST[$value]:null;
             }
         }
-        $params = array("fname", "lname", "email", "dayphone", "eveningphone", "fax", "how_did_you_hear", "address1", "address2", "city","state", "zip", "country", 
+        $params = array("fname", "middle", "lname", "email", "dayphone", "eveningphone", "fax", "how_did_you_hear", "address1", "address2", "city","state", "zip", "country", 
             "card_name", "cc_number","cc_exp_month","cc_exp_year","cc_ccv","instructions","ip","user_agent");
         foreach ($params as $key => $value) {
             if (strlen($value) < 20) {
@@ -88,7 +88,7 @@ class OrderController extends Controller
             "state"=> $state,
             "zip"=> $zip,
             "country"=> $country,
-            "cc_name"=> $card_name,
+            "cc_name"=> $fname . ' ' . $middle . ' ' . $lname,
             "cc_num"=> $cc_number,
             "cc_exp"=> $cc_exp_month.$cc_exp_year,
             "cc_cvc"=> $cc_ccv,
