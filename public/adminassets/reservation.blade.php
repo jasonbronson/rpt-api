@@ -132,7 +132,7 @@
                                             <td><select name="resort" id="reservationresortselect"> 
                                                 
                                                 @foreach($resorts as $field => $name)
-                                                    @if($field == $id)
+                                                    @if($field == $data->resort_id)
                                                         <option value="{{$field}}" selected>{{$name}}</option> 
                                                     @else
                                                         <option value="{{$field}}">{{$name}}</option>   
@@ -214,7 +214,9 @@
                                             <table class="table table-striped table-responsive">
                                                 <tbody><tr>
                                             <td nowrap="nowrap"><b>Name:</b></td>
-                                            <td><input type="text" name="last_name" value="{{$data->last_name}}"> <input type="text" name="first_name" value="{{$data->first_name}}"></td>
+                                            <td> <input type="text" name="first_name" value="{{$data->first_name}}">
+                                            <input type="text" name="last_name" value="{{$data->last_name}}">
+                                            </td>
                                             </tr>
                                                 <tr>
                                             <td nowrap="nowrap"><b>Email:</b></td>
@@ -277,7 +279,7 @@
                                             </tr>
                                                 <tr>
                                             <td nowrap="nowrap"><b>Number:</b></td>
-                                            <td><input type="text" name="cc_num" value="{{$data->cc_num}}"></td>
+                                            <td><input type="text" name="cc_num" value="{{substr($data->cc_num, -4)}}"></td>
                                             </tr>
                                                 <tr>
                                             <td nowrap="nowrap"><b>Expiration:</b></td>
