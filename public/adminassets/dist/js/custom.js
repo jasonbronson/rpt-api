@@ -76,7 +76,7 @@ $(document).ready(function(){
     $.ajax({
       type: "POST",
       dataType: "json",
-      url: "/admin/seasonRatesChange/",
+      url: "/admin/seasonRatesChange",
       data: temp,
       success: function (response) {
         console.log(response);
