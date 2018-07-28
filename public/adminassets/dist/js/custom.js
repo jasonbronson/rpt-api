@@ -171,7 +171,7 @@ $(document).ready(function(){
       $.ajax({
         type: "POST",
         dataType: "json",
-        url: "/admin/reservationChange/",
+        url: "/admin/reservationChange",
         data: temp,
         success: function (response) {
           console.log(response);
