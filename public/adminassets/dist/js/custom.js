@@ -23,7 +23,7 @@ $(document).ready(function(){
       $.ajax({
       type: "POST",
       dataType: "json",
-      url: "/admin/charge/",
+      url: "/admin/charge",
       data: "reservationid=" + $('#reservationid').val(),
       success: function (response) {
         console.log(response);
@@ -46,7 +46,7 @@ $(document).ready(function(){
     $.ajax({
       type: "POST",
       dataType: "json",
-      url: "/admin/statusChange/",
+      url: "/admin/statusChange",
       data: "status=" +$('#reservationstatus').val() + "&reservationid=" + $('#reservationid').val(),
       success: function (response) {
         console.log(response);
@@ -116,7 +116,7 @@ $(document).ready(function(){
     $.ajax({
       type: "POST",
       dataType: "json",
-      url: "/admin/creditCardChange/",
+      url: "/admin/creditCardChange",
       data: temp,
       success: function (response) {
         console.log(response);
@@ -143,7 +143,7 @@ $(document).ready(function(){
     $.ajax({
       type: "POST",
       dataType: "json",
-      url: "/admin/guestChange/",
+      url: "/admin/guestChange",
       data: temp,
       success: function (response) {
         console.log(response);
@@ -286,7 +286,7 @@ $(document).ready(function(){
         type: "POST",
         dataType: "json",
         data: data,
-        url: "/admin/saverates/",
+        url: "/admin/saverates",
         success: function (r) {
           console.log(r);
           if(r.response == "success"){
