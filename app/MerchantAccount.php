@@ -7,6 +7,9 @@ use Log;
 use App\Notifications\NotifyErrors;
 use App\Popo\Errors;
 
+/**
+ * Old Merchant
+ */
 class MerchantAccount
 {
 
@@ -38,7 +41,7 @@ class MerchantAccount
         $url['bill_country'] = $order['country'];
         $url['pay_type'] = "C";
         $url['tran_type'] = $authType;
-        $url['account_id'] = "120346453801";
+        $url['account_id'] = env('MERCHANT1_ACCOUNT_ID');
 
         $merchantParams = http_build_query($url);
 
