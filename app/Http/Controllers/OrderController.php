@@ -27,23 +27,7 @@ class OrderController extends Controller
 
         //save instructions message
         $instructions = $request->input('instructions');
-        /*$request->session()->put('instructions', $instructions);
-        for($a=2; $a < 5; $a++){
-            $data = $request->session()->get("step$a");
-            //var_dump($data);
-            foreach($data as $key => $value){
-                $$key = $value;
-            }    
-        }
-
-        $rateData = (array) $request->session()->get("rates");
-        $reservationInfo = $request->session()->get("reservationInfo");
-        $booking = $request->session()->get("booking");
-        foreach($booking as $key => $value){
-            $$key = $value;
-        }  */
-
-
+      
         //parameters
         $params = array("condo", "adults", "kids", "start", "stop");
         foreach ($params as $key => $value) {

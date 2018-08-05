@@ -10,6 +10,9 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
+use App\MerchantAccount;
+use App\Libraries\Order;
+use App\Libraries\Resort;
 
 class AdminController extends BaseController
 {
@@ -18,31 +21,17 @@ class AdminController extends BaseController
     public function __construct()
     {
         $this->db = app('db');
+        $this->merchantAccount = new MerchantAccount();
+        $this->order = new Order();
+        $this->resort = new Resort();
+
     }
     public function index(Request $request)
     {
 
-        $sql = "select * from orders where order_status = 'n' and order_date_submit > '2018-01-01'";
-        $rows = $this->db->select($sql);
-        $newOrders = count($rows);
+        $newOrders = $this->order->getNewOrdersCount();
 
-        $sql = "select count(*) count, month(order_date_submit) as month, year(order_date_submit) as year from orders
-        where order_date_submit >= date_sub(DATE_FORMAT(now(), '%Y-01-01'), interval 1 YEAR)
-        group by month, year
-        order by month, year";
-        $rows = $this->db->select($sql);
-        foreach ($rows as $row) {
-            $count = $row->count;
-            $month = $row->month;
-            $year = $row->year;
-            if ($year == (date("Y") - 1)) {
-                $temp[$month] = array("item1" => $count, "month" => $year . "-" . $month, "item2" => 0);
-
-            } else {
-                $temp[$month] = array_merge($temp[$month], array("item2" => $count));
-            }
-
-        }
+        $data = $this->order->test();
         //dd($temp);
         $data = array("new" => $newOrders, "data" => $temp);
         return view('adminassets.index')->with($data);
@@ -126,7 +115,24 @@ class AdminController extends BaseController
 
     public function charge(Request $request)
     {
+        
+        $order = $this->order->getOrderById( $request->input('reservationid') );
+        $order = (array) $order;
+        $chargeresult = $this->merchantAccount->ChargeCreditCard($order, "C", $order['total']);
+        if($chargeresult){
+            return json_encode("success");
+        }else{
+            return json_encode( array("Error" => "failed of error: {$this->merchantAccount->getReason()}") );
+        }
+        
+    }
 
+    public function chargeAdditional(Request $request){
+        
+        $description = $request->input('add_charge_description');
+        $chargeAmount = $request->input('add_charge_amount');
+        $chargeType = $request->input('add_charge_type');
+        
         return json_encode("success");
     }
 
@@ -370,12 +376,9 @@ class AdminController extends BaseController
 
     public function reservation($id)
     {
-
-        $sql = "select * from orders where order_id = ?";
-        $row = $this->db->select($sql, [$id]);
+        $row = $this->order->getOrderById($id);
         if (!empty($row)) {
-
-            $row = $row[0];
+            
             if ($row->order_status == "c") {
                 $row->order_status_full = "Complete";
             }

@@ -35,6 +35,7 @@ class ReservationEmails{
             $email = $row->email;
             $emailData = array("subject" => $subject, "content" => $content); 
             Mail::to($email)->send(new Reservation($emailData, $row->notification_id));
+            Log::debug("SendEmail: to $email ".print_r($emailData, true) );
         }
 
     }

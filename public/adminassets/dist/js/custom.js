@@ -253,6 +253,28 @@ $(document).ready(function(){
 
   });
 
+  $('#chargeadditional').click(function (e) {
+    e.preventDefault();
+    var myform = $('#formadditionalcharges');
+    $.ajax({
+        url: '/admin/chargeadditional',
+        method: 'post',
+        data: myform.serialize(),
+        dataType: 'text',
+        complete: function(e, xhr) {
+            if (e.status === 200) {
+                object = JSON.parse(e.responseText);
+                console.log(object);
+                showNotification('Charge Success', "info");
+
+            } else {
+              showNotification('Charge Failed', "error");
+            }
+        }
+
+    });
+  });
+
   $('#existingrates').change(function(){
 
       var rateName = $('#existingrates').val();

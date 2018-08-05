@@ -31,6 +31,7 @@ Route::any('/admin/creditCardChange', 'AdminController@creditCardChange');
 Route::any('/admin/seasonRatesChange', 'AdminController@seasonRatesChange');
 Route::any('/admin/statusChange', 'AdminController@statusChange');
 Route::any('/admin/charge', 'AdminController@charge');
+Route::any('/admin/chargeadditional', 'AdminController@chargeAdditional');
 Route::any('/admin/logout', 'AdminController@logout');
 Route::any('/admin/resorts', 'AdminController@resorts');
 Route::any('/admin/resort/{resortid}', 'AdminController@resort');

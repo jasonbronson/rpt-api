@@ -13,12 +13,12 @@ class MerchantAccount
     const MERCHANT_URL = "https://secure.fasttransact.com:1402/gw/sas/direct3.1?";
     private $reason;
 
-    public function ChargeCreditCard($order){
+    public function ChargeCreditCard($order, $authType = "A", $amount = "1.00"){
 
         $url['card_number'] = $order['cc_num'];
         $url['card_expire'] = $order['cc_exp'];
         $url['cust_ip'] = $order['ip'];
-        $url['amount'] = "1.00";
+        $url['amount'] = $amount;
 
         if($url['card_number']=="4222222222222222"){
             $url['amount'] = "1.11";
@@ -37,7 +37,7 @@ class MerchantAccount
         $url['cust_email'] = $order['email'];
         $url['bill_country'] = $order['country'];
         $url['pay_type'] = "C";
-        $url['tran_type'] = "A";
+        $url['tran_type'] = $authType;
         $url['account_id'] = "120346453801";
 
         $merchantParams = http_build_query($url);

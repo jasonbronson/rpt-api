@@ -36,69 +36,116 @@
                     <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
                               <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Reservation</a></li>
-                              <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Credit Card History</a></li>
+                              <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Credit Charge History</a></li>
                               <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Customer History</a></li>
-                              
-                              
                             </ul>
                             <div class="tab-content">
                               <div class="tab-pane active" id="tab_1">
-                                
-                                    <div class="col-md-4">
-                                            <form id="seasonratesform">
-                                                    <input type="hidden" name="reservationid" value="{{$id}}">
-                                                    <table class="table table-striped table-responsive">
-                                                      <thead>
-                                                      <tr><td colspan="5"></td></tr>
-                                                      </thead>
-                                                      <tbody><tr>
-                                                        <td bgcolor="#6699FF"><font color="#FFFFFF"><b>Season</b></font></td>
-                                                        <td bgcolor="#6699FF"><font color="#FFFFFF"><b>Date</b></font></td>
-                                                        <td bgcolor="#6699FF" align="right"><font color="#FFFFFF"><b>Price</b></font></td>
-                                                        <td bgcolor="#6699FF" align="right"><font color="#FFFFFF"><b>Extra</b></font></td>
-                                                        <td bgcolor="#6699FF" align="right"><font color="#FFFFFF"><b>Total</b></font></td>
-                                                      </tr>
-                                              
-                                                      <?php 
-                                                      $count = 0;
-                                                      ?>
-                                                      @foreach($quote['Daily'] as $field => $value)
-                                                      <?php 
-                                                      $count++;
-                                                      if(isset($value['Date'])){
-                                                        $date = $value['Date'];
-                                                      }else{
-                                                        $date = $field;
-                                                      }
-                                                      ?>
-                                                      <tr>
-                                                          <td><input type="hidden" name="Season{{$count}}" value="{{$value['Season']}}">{{$value['Season']}}</td>
-                                                          <td> <input type="hidden" name="Date{{$count}}" value="{{$date}}"> {{$date}}</td>
-                                                          <td align="right">$<input type="text" name="Price{{$count}}" value="{{$value['Price']}}" size="8"> </td>
-                                                          <td align="right">$<input type="text" name="Extra{{$count}}" value="{{$value['Extra']}}" size="8"></td>
-                                                          <td align="right" class="RatesTotal{{$count}}">${{$value['Total']}}</td>
-                                                        </tr>
-                                                      @endforeach  
-                                                    <tr><td colspan="4"><b>Subtotal</b></td><td align="right" class="reservationSubtotal"><b>${{$quote['Subtotal']}}</b></td></tr>
-                                                    <tr><td colspan="4"><b>Booking Fee</b></td><td align="right">$<input type="text" name="BookingFee" value="{{$quote['BookingFee']}}" size="5"></td></tr>
-                                                    <tr><td colspan="4"><b>Cleaning Fee</b></td><td align="right">$<input type="text" name="CleaningFee" value="{{$quote['CleaningFee']}}" size="5"></td></tr>
-                                                    <tr><td colspan="4"><b>Impact Fee</b></td><td align="right">$<input type="text" name="ImpactFee" value="{{$quote['ImpactFee']}}" size="5"></td></tr>
-                                                    <tr><td colspan="4"><b>Tax</b></td><td align="right" class="reservationTax">${{$quote['Tax']}}</td></tr>
-                                                    <tr><td colspan="4"><b>Total</b></td><td align="right" class="reservationTotal"><b>${{$quote['Total']}}</b></td></tr>
-                                                    <tr><td colspan="7" align="right"><br>
-                                                    <input type="hidden" name="Subtotal" value="{{$quote['Subtotal']}}">
-                                                    <input type="hidden" name="Tax" value="{{$quote['Tax']}}">
-                                                    <input type="hidden" name="Total" value="{{$quote['Total']}}">
-                                                    <input type="hidden" name="condo" value="{{$data->condo_id}}">
-                                                    <input type="button" id="seasonratesbutton" value="Change Pricing"> </td></tr>
-                                                          </tbody></table>
-                                                    </form>
-
-                                                    <div>
-                                                          <hr>
-                                                           <p>Charge Credit Card <input type="button" id="chargecreditbutton" value="Charge" class="colorred"> </p>
-                                                    </div>
-                                    </div>
+                              <div class="col-md-4">
+                                <form id="seasonratesform" name="seasonratesform">
+                                    <input name="reservationid" type="hidden" value="{{$id}}"> @foreach($quote['Daily'] as $field => $value) @endforeach
+                                    <table class="table table-striped table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <td colspan="5"></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td bgcolor="#6699FF"><font color="#FFFFFF"><b>Season</b></font></td>
+                                                <td bgcolor="#6699FF"><font color="#FFFFFF"><b>Date</b></font></td>
+                                                <td align="right" bgcolor="#6699FF"><font color="#FFFFFF"><b>Price</b></font></td>
+                                                <td align="right" bgcolor="#6699FF"><font color="#FFFFFF"><b>Extra</b></font></td>
+                                                <td align="right" bgcolor="#6699FF"><font color="#FFFFFF"><b>Total</b></font></td>
+                                            </tr><?php $count = 0; ?><?php $count++;
+                                                if(isset($value['Date'])){
+                                                    $date = $value['Date'];
+                                                }else{
+                                                    $date = $field;
+                                                }
+                                                ?>
+                                            <tr>
+                                                <td><input name="Season{{$count}}" type="hidden" value="{{$value['Season']}}">{{$value['Season']}}</td>
+                                                <td><input name="Date{{$count}}" type="hidden" value="{{$date}}"> {{$date}}</td>
+                                                <td align="right"><input name="Price{{$count}}" size="8" type="text" value="{{$value['Price']}}"></td>
+                                                <td align="right"><input name="Extra{{$count}}" size="8" type="text" value="{{$value['Extra']}}"></td>
+                                                <td align="right" class="RatesTotal{{$count}}">${{$value['Total']}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4"><b>Subtotal</b></td>
+                                                <td align="right" class="reservationSubtotal"><b>${{$quote['Subtotal']}}</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4"><b>Booking Fee</b></td>
+                                                <td align="right"><input name="BookingFee" size="5" type="text" value="{{$quote['BookingFee']}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4"><b>Cleaning Fee</b></td>
+                                                <td align="right"><input name="CleaningFee" size="5" type="text" value="{{$quote['CleaningFee']}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4"><b>Impact Fee</b></td>
+                                                <td align="right" colspan="3"><input name="ImpactFee" size="5" type="text" value="{{$quote['ImpactFee']}}"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4"><b>Tax</b></td>
+                                                <td align="right" class="reservationTax">${{$quote['Tax']}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4"><b>Total</b></td>
+                                                <td align="right" class="reservationTotal"><b>${{$quote['Total']}}</b></td>
+                                            </tr>
+                                            <tr>
+                                            <td colspan="6"></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td align="right" colspan="3"><input name="Subtotal" type="hidden" value="{{$quote['Subtotal']}}"> <input name="Tax" type="hidden" value="{{$quote['Tax']}}"> <input name="Total" type="hidden" value="{{$quote['Total']}}"> <input name="condo" type="hidden" value="{{$data->condo_id}}"> <input id="seasonratesbutton" type="button" value="Change Pricing"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6"><input class="colorred" id="chargecreditbutton" type="button" value="Charge Order"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                                <div>
+                                    <p></p>
+                                </div>
+                                <div>
+                                    <hr>
+                                    <form id="formadditionalcharges" name="formadditionalcharges">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Additional Charge Description</td>
+                                                    <td></td>
+                                                    <td colspan="4"><input name="add_charge_description" type="text"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Additional Charge Amount $</td>
+                                                    <td></td>
+                                                    <td align="right" class="reservationTotal"><input name="add_charge_amount" type="text"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><select name="add_charge_type">
+                                                        <option value='a'>
+                                                            Authorization
+                                                        </option>
+                                                        <option value='c'>
+                                                            Charge
+                                                        </option>
+                                                    </select></td>
+                                                    <td></td>
+                                                    <td align="right"><button id="chargeadditional" class="colorred">Charge Additional</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                            </div>
+                                    
                                     <div class="col-md-6">
 
                                         <div class="btn-align"><h3>Reservation {{$id}}</h3> 
