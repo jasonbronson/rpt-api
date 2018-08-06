@@ -265,10 +265,11 @@ $(document).ready(function(){
             if (e.status === 200) {
                 object = JSON.parse(e.responseText);
                 console.log(object);
-                //if(object.Error){
+                if(object.Error){
                   showNotification('Charge Failed ' + object.Error, "error");    
-                //}
-                //showNotification('Charge Success', "info");
+                }else{
+                  showNotification('Charge Success', "info");
+                }
 
             } else {
               showNotification('Charge Failed', "unknown error");
