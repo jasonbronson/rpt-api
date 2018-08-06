@@ -17,6 +17,9 @@ class Order {
 
     public function getOrderById($reservationId){
 
+        if(empty($reservationId)){
+            return null;
+        }
         $row = DB::table('orders')->select('*')->where('order_id', $reservationId)->first();
         $quote = unserialize($row->quote);
         $row->total = $quote['Total'];
@@ -38,7 +41,7 @@ class Order {
         return $rows->get();
     }
 
-    public function test(){
+    public function getNewOrdersCountData(){
 
         $sql = "select 
         count(*) count, 
@@ -60,6 +63,8 @@ class Order {
             }
 
         }
+
+        return $temp;
 
     }
 

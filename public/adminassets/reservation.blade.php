@@ -116,6 +116,7 @@
                                 <div>
                                     <hr>
                                     <form id="formadditionalcharges" name="formadditionalcharges">
+                                    <input type="hidden" name="reservation_id" value="{{$id}}">
                                         <table>
                                             <tbody>
                                                 <tr>
@@ -130,10 +131,10 @@
                                                 </tr>
                                                 <tr>
                                                     <td><select name="add_charge_type">
-                                                        <option value='a'>
+                                                        <option value='A'>
                                                             Authorization
                                                         </option>
-                                                        <option value='c'>
+                                                        <option value='C'>
                                                             Charge
                                                         </option>
                                                     </select></td>
@@ -377,7 +378,7 @@
                                                     <th>Details</th>
                                                     </thead>    
                                                     @foreach($cchistory as $value)
-                                                      <tr> <td>{{$value->datetime}}</td> <td>{{$value->amount}}</td> <td>{{$value->merchantdetails}}</td></tr>
+                                                      <tr> <td>{{$value->datetime}}</td> <td>{{$value->amount}}</td> <td>{{$value->merchantdetails}} {{$value->header}}</td></tr>
                                                     @endforeach
                                                 </table>    
                                             </div>

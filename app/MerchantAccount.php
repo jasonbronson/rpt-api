@@ -3,23 +3,29 @@
 namespace App;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
-use Log;
 use App\Notifications\NotifyErrors;
 use App\Popo\Errors;
+use App\Libraries\Merchant;
 
 /**
  * Old Merchant
  */
-class MerchantAccount
+class MerchantAccount extends Merchant
 {
 
     const MERCHANT_URL = "https://secure.fasttransact.com:1402/gw/sas/direct3.1?";
     private $reason;
 
-    public function ChargeCreditCard($order, $authType = "A", $amount = "1.00"){
+    public function ChargeCreditCard($order, $authType = "A", $amount = "1.00", $reservationNumber = 0, $recordHistory = false, $username = "", $description = ""){
+
+        if(is_object($order)){
+            $order = (array) $order;
+        }
+        //$this->log("Order Data ".print_r($order, true), "debug");
 
         $url['card_number'] = $order['cc_num'];
-        $url['card_expire'] = $order['cc_exp'];
+        $url['card_expire'] = date("my", strtotime($order['cc_exp']) );
+        $this->log("Expire {$url['card_expire']}");
         $url['cust_ip'] = $order['ip'];
         $url['amount'] = $amount;
 
@@ -44,25 +50,32 @@ class MerchantAccount
         $url['account_id'] = env('MERCHANT1_ACCOUNT_ID');
 
         $merchantParams = http_build_query($url);
-
-        Log::error($url);
-
+        $this->log($merchantParams, "debug");
         $client = new Client(); //GuzzleHttp\Client
         $res = $client->get(self::MERCHANT_URL.$merchantParams, ['http_errors' => false]);
         $this->reason = $res->getReasonPhrase();
 
-        if($res->getStatusCode() == 200 && strpos($this->reason, "Approved")){
+        if($res->getStatusCode() == 200 && strpos($this->reason, "Approved") !== false){
+            if($recordHistory){
+                $this->logTransaction($reservationNumber, $amount, $this->getReason(), "$description Charge Type $authType, APPROVED TRANSACTION  [By User $username] ");
+            }
             return true;
         }else{
-            Log::error($this->reason);
+            if($recordHistory){
+                $this->logTransaction($reservationNumber, $amount, $this->getReason(), "$description Charge Type $authType, [By User $username] ");
+            }
+            $this->log($this->reason);
             \Notification::send(Users::first(), new NotifyErrors($this->reason." ".$merchantParams));
             return false;
         }
 
 
-
     }
 
+    public function logTransaction($reservationNumber, $amount, $details, $additionalDetails){
+            $this->insertCreditCardHistoryRow($reservationNumber, $amount, $details, $additionalDetails);
+    }
+        
     public function getReason(){
         return $this->reason;
     }

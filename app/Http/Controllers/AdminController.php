@@ -31,9 +31,9 @@ class AdminController extends BaseController
 
         $newOrders = $this->order->getNewOrdersCount();
 
-        $data = $this->order->test();
+        $newOrderData = $this->order->getNewOrdersCountData();
         //dd($temp);
-        $data = array("new" => $newOrders, "data" => $temp);
+        $data = array("new" => $newOrders, "data" => $newOrderData);
         return view('adminassets.index')->with($data);
     }
 
@@ -115,10 +115,9 @@ class AdminController extends BaseController
 
     public function charge(Request $request)
     {
-        
-        $order = $this->order->getOrderById( $request->input('reservationid') );
-        $order = (array) $order;
-        $chargeresult = $this->merchantAccount->ChargeCreditCard($order, "C", $order['total']);
+        $reservationNumber = $request->input('reservationid');
+        $order = $this->order->getOrderById( $reservationNumber );
+        $chargeresult = $this->merchantAccount->ChargeCreditCard($order, "C", $order->total, $reservationNumber, true);
         if($chargeresult){
             return json_encode("success");
         }else{
@@ -129,11 +128,20 @@ class AdminController extends BaseController
 
     public function chargeAdditional(Request $request){
         
-        $description = $request->input('add_charge_description');
-        $chargeAmount = $request->input('add_charge_amount');
+        $description = "Additional Charge Description ".$request->input('add_charge_description');
+        $amount = $request->input('add_charge_amount');
         $chargeType = $request->input('add_charge_type');
-        
-        return json_encode("success");
+        $reservationNumber = $request->input('reservation_id');
+        $username = $request->input('username');
+
+        $order = $this->order->getOrderById( $reservationNumber );
+        //log the history
+        $chargeresult = $this->merchantAccount->ChargeCreditCard($order, $chargeType, $amount, $reservationNumber, true, $username, $description);
+        if($chargeresult){
+            return json_encode("success");
+        }else{
+            return json_encode( array("Error" => "{$this->merchantAccount->getReason()}") );
+        }
     }
 
     public function resorts(Request $request)
