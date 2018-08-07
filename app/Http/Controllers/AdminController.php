@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use App\MerchantAccount;
 use App\Libraries\Order;
 use App\Libraries\Resort;
+use App\Libraries\Condo;
 
 class AdminController extends BaseController
 {
@@ -23,7 +24,8 @@ class AdminController extends BaseController
         $this->db = app('db');
         $this->merchantAccount = new MerchantAccount();
         $this->order = new Order();
-        $this->resort = new Resort();
+        $this->resorts = new Resort();
+        $this->condos = new Condo();
 
     }
     public function index(Request $request)
@@ -137,6 +139,9 @@ class AdminController extends BaseController
         $order = $this->order->getOrderById( $reservationNumber );
         //log the history
         $chargeresult = $this->merchantAccount->ChargeCreditCard($order, $chargeType, $amount, $reservationNumber, true, $username, $description);
+
+        //testing
+        return json_encode("success");
         if($chargeresult){
             return json_encode("success");
         }else{
@@ -404,8 +409,7 @@ class AdminController extends BaseController
 
             $row->total = isset($quote['total']) ? $quote['total'] : $quote['Total'];
 
-            $sql = "select * from condos c
-            join resorts r on r.`resort_id` = c.`resort_id`";
+            $sql = "select * from condos c join resorts r on r.`resort_id` = c.`resort_id`";
             $condoRows = $this->db->select($sql, []);
             $resorts = array();
             $condos = array();
@@ -419,15 +423,8 @@ class AdminController extends BaseController
 
             }
 
-            $resortRows = $this->db->select("select * from resorts", []);
-            foreach ($resortRows as $value) {
-                $resorts[$value->resort_id] = $value->resort_name;
-            }
-            
-            $condoRows = $this->db->select("select * from condos", []);
-            foreach ($condoRows as $value) {
-                $condos[$value->condo_id] = $value->condo_name;
-            }
+            $resorts = $this->resorts->getResorts();
+            $condos = $this->condos->getCondos($row->resort_id);
 
             $cchistory = $this->db->select("select * from creditcard_history where reservationnumber = ?  order by id desc", [$row->order_id]);
             $orderhistory = $this->db->select("select * from order_log where orderid = ? order by id desc", [$row->order_id]);

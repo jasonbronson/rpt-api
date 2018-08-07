@@ -3,7 +3,6 @@
 
   @include('adminassets.headeribbon')
  
-
   
  <script language="jscript" type="text/javascript">
     function Confirm()
@@ -43,7 +42,7 @@
                               <div class="tab-pane active" id="tab_1">
                               <div class="col-md-4">
                                 <form id="seasonratesform" name="seasonratesform">
-                                    <input name="reservationid" type="hidden" value="{{$id}}"> @foreach($quote['Daily'] as $field => $value) @endforeach
+                                    <input name="reservationid" type="hidden" value="{{$id}}"> 
                                     <table class="table table-striped table-responsive">
                                         <thead>
                                             <tr>
@@ -57,12 +56,16 @@
                                                 <td align="right" bgcolor="#6699FF"><font color="#FFFFFF"><b>Price</b></font></td>
                                                 <td align="right" bgcolor="#6699FF"><font color="#FFFFFF"><b>Extra</b></font></td>
                                                 <td align="right" bgcolor="#6699FF"><font color="#FFFFFF"><b>Total</b></font></td>
-                                            </tr><?php $count = 0; ?><?php $count++;
-                                                if(isset($value['Date'])){
-                                                    $date = $value['Date'];
-                                                }else{
-                                                    $date = $field;
-                                                }
+                                            </tr>
+                                            <?php 
+                                                  $count = 0;  
+                                                  foreach($quote['Daily'] as $field => $value):
+                                                    $count++;
+                                                    if(isset($value['Date'])){
+                                                        $date = $value['Date'];
+                                                    }else{
+                                                        $date = $field;
+                                                    }
                                                 ?>
                                             <tr>
                                                 <td><input name="Season{{$count}}" type="hidden" value="{{$value['Season']}}">{{$value['Season']}}</td>
@@ -71,9 +74,14 @@
                                                 <td align="right"><input name="Extra{{$count}}" size="8" type="text" value="{{$value['Extra']}}"></td>
                                                 <td align="right" class="RatesTotal{{$count}}">${{$value['Total']}}</td>
                                             </tr>
+                                                <?php endforeach; ?>
                                             <tr>
                                                 <td colspan="4"><b>Subtotal</b></td>
                                                 <td align="right" class="reservationSubtotal"><b>${{$quote['Subtotal']}}</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4"><b>Tax</b></td>
+                                                <td align="right" class="reservationTax">${{$quote['Tax']}}</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4"><b>Booking Fee</b></td>
@@ -86,10 +94,6 @@
                                             <tr>
                                                 <td colspan="4"><b>Impact Fee</b></td>
                                                 <td align="right" colspan="3"><input name="ImpactFee" size="5" type="text" value="{{$quote['ImpactFee']}}"></td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="4"><b>Tax</b></td>
-                                                <td align="right" class="reservationTax">${{$quote['Tax']}}</td>
                                             </tr>
                                             <tr>
                                                 <td colspan="4"><b>Total</b></td>

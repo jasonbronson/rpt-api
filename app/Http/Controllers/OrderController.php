@@ -52,7 +52,7 @@ class OrderController extends Controller
         //if charge successful then record the order
         $order = array(
             "order_status" => "n",
-            "order_date_submit" => date("Y-m-d"),
+            "order_date_submit" => date("Y-m-d H:i"),
             "condo_id" => $condo,
             "adults"=> $adults,
             "kids"=> $kids,

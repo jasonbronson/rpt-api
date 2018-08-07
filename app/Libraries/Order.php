@@ -21,12 +21,9 @@ class Order {
             return null;
         }
         $row = DB::table('orders')->select('*')->where('order_id', $reservationId)->first();
-        $quote = unserialize($row->quote);
-        if(is_object($quote)){
-            $row->total = $quote->Total;
-        }elseif(is_array($quote)){
-            $row->total = $quote['Total'];
-        }
+        $quote = (array) unserialize($row->quote);
+        $row->total = $quote['Total'];
+        
         return $row;
 
     }
