@@ -46,7 +46,7 @@
                 
                   @foreach($rows as $data)
                   <tr>
-                    <td><a href="/admin/reservation/{{$data->order_id}}">{{$data->last_name}},{{$data->first_name}} </a></td>
+                    <td><a href="/admin/reservation/{{$data->order_id}}">{{$data->last_name}}, {{$data->first_name}} </a></td>
                     <td>{{($data->adults + $data->kids)}}</td>
                     <td>{{$data->resort_name}} {{$data->condo_name}}</td>
                     <td>{{$data->arrive}} to {{$data->depart}}</td>
