@@ -135,7 +135,7 @@ class ReservationRates
         $reservationQuote->BookingFee = $bookingFee;
         $reservationQuote->CleaningFee = $cleaningFee;
         $reservationQuote->ImpactFee = $impactFee;
-        $reservationQuote->Tax = number_format($tax + $impactFee + $bookingFee + $cleaningFee, 2);
+        $reservationQuote->Tax = number_format($tax, 2);
         $reservationQuote->Total = number_format($subtotal + $tax + $impactFee + $bookingFee + $cleaningFee, 2);
         $reservationQuote->Subtotal = number_format($subtotal, 2);
         

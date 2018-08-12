@@ -50,7 +50,7 @@
                     <td>{{($data->adults + $data->kids)}}</td>
                     <td>{{$data->resort_name}} {{$data->condo_name}}</td>
                     <td>{{$data->arrive}} to {{$data->depart}}</td>
-                    <td>{{$data->total}}</td>
+                    <td>${{$data->total}}</td>
                     <td>{{$data->order_date_submit}}</td>
                     <td>{{$data->order_status}}</td>
                   </tr>

@@ -77,37 +77,6 @@ class AdminController extends BaseController
         return view('adminassets.users')->with(array("rows" => $rows));
     }
 
-    public function reservations(Request $request)
-    {
-
-        $sql = "select o.*, c.`condo_name`,  r.`resort_name` from orders o
-        left join condos c on c.condo_id = o.condo_id
-        left join resorts r on c.resort_id = r.`resort_id`
-        order by order_id desc limit 1200";
-        $rows = $this->db->select($sql);
-        foreach ($rows as $row) {
-
-            if ($row->order_status == "c") {
-                $row->order_status = "Complete";
-            }
-            if ($row->order_status == "n") {
-                $row->order_status = "New";
-            }
-            if ($row->order_status == "p") {
-                $row->order_status = "Pending";
-            }
-            $row->order_date_submit = date("m-d-Y H:i", strtotime($row->order_date_submit));
-            $row->arrive = date("m-d-Y", strtotime($row->arrive));
-            $row->depart = date("m-d-Y", strtotime($row->depart));
-            $quote = (array) unserialize($row->quote);
-            $row->total = isset($quote['total']) ? $quote['total'] : $quote['Total'];
-
-            $data[] = $row;
-        }
-
-        return view('adminassets.reservations')->with(array("rows" => $data));
-    }
-
     public function logout(Request $request)
     {
 
@@ -387,6 +356,37 @@ class AdminController extends BaseController
         return array("response" => "success");
     }
 
+    public function reservations(Request $request)
+    {
+
+        $sql = "select o.*, c.`condo_name`,  r.`resort_name` from orders o
+        left join condos c on c.condo_id = o.condo_id
+        left join resorts r on c.resort_id = r.`resort_id`
+        order by order_id desc limit 1200";
+        $rows = $this->db->select($sql);
+        foreach ($rows as $row) {
+
+            if ($row->order_status == "c") {
+                $row->order_status = "Complete";
+            }
+            if ($row->order_status == "n") {
+                $row->order_status = "New";
+            }
+            if ($row->order_status == "p") {
+                $row->order_status = "Pending";
+            }
+            $row->order_date_submit = date("m-d-Y H:i", strtotime($row->order_date_submit));
+            $row->arrive = date("m-d-Y", strtotime($row->arrive));
+            $row->depart = date("m-d-Y", strtotime($row->depart));
+            $quote = (array) unserialize($row->quote);
+            $row->total = isset($quote['total']) ? $quote['total'] : $quote['Total'];
+
+            $data[] = $row;
+        }
+
+        return view('adminassets.reservations')->with(array("rows" => $data));
+    }
+
     public function reservation($id)
     {
         $row = $this->order->getOrderById($id);
@@ -545,7 +545,7 @@ class AdminController extends BaseController
         $condoInfo = $this->db->select("select * from condos where condo_id=?", [$condoId]);
 
         //recalculate Tax and Totals
-        $temp['Tax'] = ($subtotal * ($condoInfo[0]->condo_tax_rate / 100)) + $fees;
+        $temp['Tax'] = ($subtotal * ($condoInfo[0]->condo_tax_rate / 100));
         $temp['Total'] = $temp['Tax'] + $subtotal;
 
         //backup old quote
