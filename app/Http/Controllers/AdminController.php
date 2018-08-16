@@ -152,7 +152,7 @@ class AdminController extends BaseController
         $sql = "select * from resorts where resort_id=?";
         $row = $this->db->select($sql, [$resortid]);
 
-        $sql = "select * from condos c join resorts r on c.resort_id = r.resort_id where r.resort_id = ? order by resort_name";
+        $sql = "select * from condos c join resorts r on c.resort_id = r.resort_id where r.resort_id = ? order by condo_name";
         $condos = $this->db->select($sql, [$resortid]);
 
         $resorts = $this->getResorts();
